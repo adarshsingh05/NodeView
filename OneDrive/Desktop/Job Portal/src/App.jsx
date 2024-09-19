@@ -8,7 +8,7 @@ import MyJobs from './pages/my-jobs';
 import JobListing from './pages/job-listing';
 import Jobs from './pages/jobs';
 import PostJobs from './pages/post-jobs';
-
+import { ThemeProvider } from './components/theme-provider';
 // defining the router dom and creating athe route for the multi pages app.
 const router=createBrowserRouter([
   {
@@ -47,10 +47,11 @@ const router=createBrowserRouter([
   },
 ]);
 function App() {
-  
-  //  returning thr router
-  return <RouterProvider router={router}/>;
-  
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;

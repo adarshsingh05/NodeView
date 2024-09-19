@@ -1,13 +1,19 @@
-import { Outlet } from "react-router-dom"
-
+import Header from "@/components/header";
+import { Outlet } from "react-router-dom";
 const AppLayout = () => {
   return (
     <div>
-      App Lyout
-       {/* all of the routes will be rendered at this place */}
-      <Outlet/>
-    </div>
-  )
-}
+      <div className="grid-background"></div>
+      {/* putting all the routes in main */}
+      <main className="min-h-screen container">
+        <Header/>
+        <Outlet />  
+      </main>  
 
-export default AppLayout
+      {/* creating a footer */}
+      <div className="p-10 text-center bg-gray-800 mt-10"> Made With Love By Adarsh Singh</div>
+      </div>
+  );
+};
+
+export default AppLayout;
