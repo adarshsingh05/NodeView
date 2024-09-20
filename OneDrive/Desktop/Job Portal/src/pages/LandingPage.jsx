@@ -39,7 +39,7 @@ const LandingPage = () => {
       </section>
       <div className="flex gap-6 justify-center" >
         {/* button and linking to respective place-routing */}
-        <Link to='/jobs'>
+        <Link to='/my-jobs'>
         {/* adding th custom defined class into the button as variant */}
         <Button variant='blue' size="xl">Find Projects</Button>
         </Link>

@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from './ui/button';
 import { SignedIn, SignIn } from '@clerk/clerk-react';
 import { SignInButton } from '@clerk/clerk-react';
 import {UserButton } from '@clerk/clerk-react';
 import { SignedOut } from '@clerk/clerk-react';
-import { PenBox } from 'lucide-react';
+import { BriefcaseBusiness, PenBox } from 'lucide-react';
 const Header = () => {
 // creating a state to handle buttons and over lay
  const [showSignIn, setShowSignIn]=useState(false);
+
+//  creating a function such that wherever user is I need to make if login if he is not already
+const[search, setSearch]= useSearchParams();
+
+useEffect(()=>{
+  if(search.get('sign-in')){
+    setShowSignIn(true);
+  }
+}, [search])
 //function to handle overlay click
   const handleOverlayClick=(e)=>{
     if(e.target===e.currentTarget){
@@ -40,7 +49,29 @@ const Header = () => {
           <PenBox size={20} className='mr-2'></PenBox>
           Post a Job</Button>
         </Link>
-        <UserButton />
+        <UserButton
+      //  adding more options to user Button 
+         appearance={{
+          elements: {
+            avatarBox: "w-10 h-10",
+          },
+         }}
+         >
+          <UserButton.MenuItems>
+            {/* first option */}
+            <UserButton.Link
+            label= "My Projects"
+            labelIcon={<BriefcaseBusiness size={15}/>}
+            href='/my-jobs'
+            />
+            {/* second option  */}
+            <UserButton.Link
+            label='Saved Projects'
+            labelIcon={<BriefcaseBusiness size={15}/>}
+            href='/my-jobs'
+            />
+            </UserButton.MenuItems>
+          </UserButton>
       </SignedIn>
 
     </div>
