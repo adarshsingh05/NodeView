@@ -1,0 +1,26 @@
+[
+    {
+      "question": "What is FreelancePro?",
+      "answer": "FreelancePro is a platform that connects freelancers with clients seeking project-based work. It provides tools for freelancers to showcase their skills and for clients to post projects, ensuring a smooth collaboration."
+    },
+    {
+      "question": "How do I post a project?",
+      "answer": "As a client, you can post a project by navigating to the 'Post Project' section after logging in. Fill in the project details and submit the form to create a new project listing."
+    },
+    {
+      "question": "How can I search for projects?",
+      "answer": "Freelancers can search for projects by keywords, category, or budget using the search bar on the homepage or the dedicated project search page."
+    },
+    {
+      "question": "How do I apply for a project?",
+      "answer": "To apply for a project, click on the project listing and follow the application instructions provided. You may need to submit a proposal and outline your experience."
+    },
+    {
+      "question": "Can I save projects to apply later?",
+      "answer": "Yes, you can save projects by clicking the 'Save Project' button on the project listing. Saved projects can be accessed from your profile under the 'Saved Projects' section."
+    },
+    {
+      "question": "How do I track my project applications?",
+      "answer": "Freelancers can track the status of their applications from the 'Applications' section in their profile. This section provides updates on the progress of each application."
+    }
+]
