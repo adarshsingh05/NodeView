@@ -6,9 +6,12 @@ import { SignInButton } from '@clerk/clerk-react';
 import {UserButton } from '@clerk/clerk-react';
 import { SignedOut } from '@clerk/clerk-react';
 import { BriefcaseBusiness, PenBox } from 'lucide-react';
+import { useUser } from '@clerk/clerk-react';
 const Header = () => {
 // creating a state to handle buttons and over lay
  const [showSignIn, setShowSignIn]=useState(false);
+//  taking out the user object
+ const{user}=useUser();
 
 //  creating a function such that wherever user is I need to make if login if he is not already
 const[search, setSearch]= useSearchParams();
@@ -42,13 +45,14 @@ useEffect(()=>{
       </SignedOut>
       <SignedIn>
 {/* show this button only when the user is recruiter so add a condition */}
-
+        {user?.unsafemetadata?.role==="recruiter" &&(
         <Link to="/post-jobs">
         <Button variant="red" className='rounded-full'> 
           {/* adding a logo */}
           <PenBox size={20} className='mr-2'></PenBox>
           Post a Job</Button>
         </Link>
+        )}
         <UserButton
       //  adding more options to user Button 
          appearance={{

@@ -10,8 +10,8 @@ const supabase=createClient(supabaseUrl,supabaseKey,{
         global:{
         headers:{
             Authorization:`Bearer ${supabaseAccessToken}`,
-        }
-    }
+        },
+    },
     });
     return supabase;
 };

@@ -10,7 +10,13 @@ const ProtectedRoutes = ({ children }) => {
     if(isLoaded && !isSignedIn && isSignedIn!==undefined){
         return <Navigate to = "/?sign-in=true"/>;
     }
-
+// the first protected route is helping us to make user log in now this will help us to onboard them
+    if(
+        user!==undefined
+        && !user?.unsafeMetadata?.role 
+        && pathname!=='/onboarding'
+        )
+         return <Navigate to='/onboarding'/>;
     return children;
 };
 
