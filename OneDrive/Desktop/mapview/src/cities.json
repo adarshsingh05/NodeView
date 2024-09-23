@@ -1,0 +1,122 @@
+[
+  {
+      "name": "Mumbai",
+      "coordinates": [19.0760, 72.8777]
+  },
+  {
+      "name": "Delhi",
+      "coordinates": [28.7041, 77.1025]
+  },
+  {
+      "name": "Kolkata",
+      "coordinates": [22.5726, 88.3639]
+  },
+  {
+      "name": "Chennai",
+      "coordinates": [13.0827, 80.2707]
+  },
+  {
+      "name": "Hyderabad",
+      "coordinates": [17.3850, 78.4867]
+  },
+  {
+      "name": "Ahmedabad",
+      "coordinates": [23.0225, 72.5714]
+  },
+  {
+      "name": "Pune",
+      "coordinates": [18.5204, 73.8567]
+  },
+  {
+      "name": "Jaipur",
+      "coordinates": [26.9124, 75.7873]
+  },
+  {
+      "name": "Lucknow",
+      "coordinates": [26.8467, 80.9462]
+  },
+  {
+      "name": "Kanpur",
+      "coordinates": [26.4499, 80.3319]
+  },
+  {
+      "name": "Nagpur",
+      "coordinates": [21.1458, 79.0882]
+  },
+  {
+      "name": "Indore",
+      "coordinates": [22.7196, 75.8577]
+  },
+  {
+      "name": "Thane",
+      "coordinates": [19.2183, 72.9781]
+  },
+  {
+      "name": "Bhopal",
+      "coordinates": [23.2599, 77.4126]
+  },
+  {
+      "name": "Visakhapatnam",
+      "coordinates": [17.6868, 83.2185]
+  },
+  {
+      "name": "Patna",
+      "coordinates": [25.5941, 85.1376]
+  },
+  {
+      "name": "Vadodara",
+      "coordinates": [22.3072, 73.1812]
+  },
+  {
+      "name": "Ghaziabad",
+      "coordinates": [28.6692, 77.4538]
+  },
+  {
+      "name": "Ludhiana",
+      "coordinates": [30.9000, 75.8573]
+  },
+  {
+      "name": "Agra",
+      "coordinates": [27.1767, 78.0081]
+  },
+  {
+      "name": "Nashik",
+      "coordinates": [19.9975, 73.7898]
+  },
+  {
+      "name": "Faridabad",
+      "coordinates": [28.4089, 77.3178]
+  },
+  {
+      "name": "Meerut",
+      "coordinates": [28.9845, 77.7064]
+  },
+  {
+      "name": "Rajkot",
+      "coordinates": [22.3039, 70.8022]
+  },
+  {
+      "name": "Varanasi",
+      "coordinates": [25.3176, 82.9739]
+  },
+  {
+      "name": "Srinagar",
+      "coordinates": [34.0837, 74.7973]
+  },
+  {
+      "name": "Aurangabad",
+      "coordinates": [19.8762, 75.3433]
+  },
+  {
+      "name": "Dhanbad",
+      "coordinates": [23.7957, 86.4304]
+  },
+  {
+      "name": "Amritsar",
+      "coordinates": [31.6340, 74.8723]
+  },
+  {
+      "name": "Jodhpur",
+      "coordinates": [26.2389, 73.0243]
+  }
+]

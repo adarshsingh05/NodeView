@@ -1,0 +1,7 @@
+
+[
+    { "name": "New York", "coordinates": [-74.006, 40.7128], "slug": "new-york" },
+    { "name": "London", "coordinates": [-0.1276, 51.5074], "slug": "london" },
+    { "name": "Tokyo", "coordinates": [139.6917, 35.6895], "slug": "tokyo" }
+  ]
+  

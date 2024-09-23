@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+#root {
+  height: 100%; /* Ensure root div takes full height */
+  width: 100%;  /* Ensure root div takes full width */
+}
+
+.App {
+  text-align: center;
+  position: relative; /* Allow for absolute positioning of child elements */
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+  position: absolute; /* To position the heading over the map */
+  top: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Ensure the text is above the map */
+}

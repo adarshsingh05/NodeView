@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Beijing",
+        "coordinates": [39.9042, 116.4074]
+    },
+    {
+        "name": "Shanghai",
+        "coordinates": [31.2304, 121.4737]
+    },
+    {
+        "name": "Guangzhou",
+        "coordinates": [23.1291, 113.2644]
+    },
+    {
+        "name": "Shenzhen",
+        "coordinates": [22.5431, 114.0579]
+    },
+    {
+        "name": "Chengdu",
+        "coordinates": [30.5728, 104.0668]
+    },
+    {
+        "name": "Wuhan",
+        "coordinates": [30.5928, 114.3055]
+    },
+    {
+        "name": "Chongqing",
+        "coordinates": [29.5630, 106.5516]
+    },
+    {
+        "name": "Tianjin",
+        "coordinates": [39.3434, 117.3616]
+    },
+    {
+        "name": "Hangzhou",
+        "coordinates": [30.2741, 120.1551]
+    },
+    {
+        "name": "Xi'an",
+        "coordinates": [34.3416, 108.9398]
+    },
+    {
+        "name": "Nanjing",
+        "coordinates": [32.0603, 118.7969]
+    },
+    {
+        "name": "Suzhou",
+        "coordinates": [31.2983, 120.5832]
+    },
+    {
+        "name": "Changsha",
+        "coordinates": [28.2282, 112.9388]
+    },
+    {
+        "name": "Shenyang",
+        "coordinates": [41.8057, 123.4315]
+    },
+    {
+        "name": "Harbin",
+        "coordinates": [45.8038, 126.5349]
+    },
+    {
+        "name": "Qingdao",
+        "coordinates": [36.0662, 120.3826]
+    },
+    {
+        "name": "Zhengzhou",
+        "coordinates": [34.7466, 113.6254]
+    },
+    {
+        "name": "Jinan",
+        "coordinates": [36.6512, 117.1205]
+    },
+    {
+        "name": "Fuzhou",
+        "coordinates": [26.0745, 119.2965]
+    },
+    {
+        "name": "Dalian",
+        "coordinates": [38.9140, 121.6147]
+    }
+  ]
+  
