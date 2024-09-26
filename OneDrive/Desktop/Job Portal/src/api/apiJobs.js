@@ -31,3 +31,36 @@ export async function getJobs(token, { location, company_id, searchQuery }) {
   return data;
 
 }
+
+// save unsave jobs
+export async function saveJob(token, { alreadySaved },saveData) {
+  const supabase = await supabaseClient(token);
+
+  if(alreadySaved){
+    const { data, deleteError } = await supabase
+    .from("saved_jobs")
+    .delete()
+    .eq("job_id",saveData.job_id);
+    if(deleteError){
+      console.error("error deleting the saved job",deleteError);
+      return null;
+    }
+    return data;
+
+
+  }
+  else{
+    const { data, insertError } = await supabase
+    .from("saved_jobs")
+    .insert([saveData])
+    .select();
+
+    if(insertError){
+      console.error("error inserting the saved job",insertError);
+      return null;
+    }
+    return data;
+
+  }
+}
+  
