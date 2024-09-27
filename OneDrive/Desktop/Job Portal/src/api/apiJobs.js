@@ -5,6 +5,7 @@ import supabaseClient from "@/utils/supabase";
 // this file will contain all the fetched data from the supabase related to the job postings
 export async function getJobs(token, { location, company_id, searchQuery }) {
   const supabase = await supabaseClient(token);
+  
   let query = supabase
     .from("jobs")
     .select("*, saved: saved_jobs(id), company: companies(name,logo_url)");
@@ -62,5 +63,43 @@ export async function saveJob(token, { alreadySaved },saveData) {
     return data;
 
   }
+}
+
+// show single job
+export async function getSingleJob(token, { job_id }) {
+  const supabase = await supabaseClient(token);
+  const {data ,error} = await supabase
+    .from("jobs")
+    .select(
+      "*, company: companies(name,logo_url), applications: applications(*)"
+    )
+    .eq("id", job_id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching company:", error);
+    return null;
+  }
+
+  return data;
+}
+
+// hiring satatus
+
+// show single job
+export async function updateHiringStatus(token, { job_id }, isOpen) {
+  const supabase = await supabaseClient(token);
+  const {data ,error} = await supabase
+    .from("jobs")
+    .update({isOpen})
+    .eq("id", job_id)
+    .select();
+
+  if (error) {
+    console.error("Error updating the job:", error);
+    return null;
+  }
+
+  return data;
 }
   

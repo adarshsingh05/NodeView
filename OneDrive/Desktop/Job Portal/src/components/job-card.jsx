@@ -73,7 +73,7 @@ const JobCard = ({
                     {!job.description && "no description found"}
             </CardContent>
             <CardFooter className='flex gap-2'>
-                <Link to= {`/jobs/${job.id}`} className='flex-1'> 
+                <Link to= {`/job/${job.id}`} className='flex-1'> 
                 <Button variant="secondary" className="w-full">
                     More Details to get
                 </Button>

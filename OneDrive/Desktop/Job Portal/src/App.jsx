@@ -10,7 +10,7 @@ import Onboarding from './pages/onboarding';
 import SavedJobs from './pages/saved-jobs';
 import MyJobs from './pages/my-jobs';
 import JobListing from './pages/job-listing';
-import Jobs from './pages/jobs';
+import JobPage from './pages/jobs';
 import PostJobs from './pages/post-jobs';
 import { ThemeProvider } from './components/theme-provider';
 import ProtectedRoutes from './components/protected-routes';
@@ -68,6 +68,17 @@ const router=createBrowserRouter([
             <PostJobs/>
           </ProtectedRoutes>)
         },
+        {
+// will go to the job page newly created and fetch with some id
+
+          path: "/job/:id",
+          element :(
+            <ProtectedRoutes> 
+            <JobPage/>
+          </ProtectedRoutes>
+            
+          )
+        }
     ],
   },
 ]);
