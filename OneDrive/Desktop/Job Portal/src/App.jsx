@@ -2,8 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css'
 
 // map
-
-
+import UserPage  from './pages/UserPage';
+import DashboardPage from './pages/DashboardPage';
 import AppLayout from './layout/AppLayout';
 import LandingPage from './pages/LandingPage';
 import Onboarding from './pages/onboarding';
@@ -77,6 +77,22 @@ const router=createBrowserRouter([
             <JobPage/>
           </ProtectedRoutes>
             
+          )
+        },
+        {
+          path: '/dashboard',  
+          element: (
+            <ProtectedRoutes> 
+              <DashboardPage /> {/* Add your dashboard here */}
+            </ProtectedRoutes>
+          ),
+        },
+        {
+          path: '/userpage',
+          element: (
+            <ProtectedRoutes>
+              <UserPage/>
+            </ProtectedRoutes>
           )
         }
     ],

@@ -76,18 +76,39 @@ const LandingPage = () => {
     </Carousel>
 
       {/* banner */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* cards */}
         {/* card 01 */}
         <Card>
           <CardHeader>
-            <CardTitle>Map View</CardTitle>
-            <CardDescription>Get Our Latest Map-Based Freelancing Features</CardDescription>
-          </CardHeader>
-            <CardContent>
-              <p>Search and get Projects Nearby You based on the new Map based selection Process</p>
-            </CardContent> 
-        </Card>
+          <div className="flex items-center space-x-2 ">
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="h-6 w-6 text-gray-500"
+          
+        >
+          
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+          />
+        </svg>
+        <CardTitle className="mr-3">Map View</CardTitle>
+      </div>
+      <CardDescription>Our own code editor with multi Language-Support</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>
+        Use Hirred Own code editor to run and test your code for your interviews with all new AI Based plagiarism Detector
+      </p>
+    </CardContent>
+  </Card>
 
         {/* card 02*/}
         <Card>
@@ -97,6 +118,31 @@ const LandingPage = () => {
           </CardHeader>
             <CardContent>
               <p>Get Your resume verified Get missing Keywords and Suggestions based on the Project Description</p>
+            </CardContent> 
+        </Card>
+      </section>
+
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-0">
+        {/* cards */}
+        {/* card 01 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Interview Room</CardTitle>
+            <CardDescription>Get Our all new personalised Interview Room</CardDescription>
+          </CardHeader>
+            <CardContent>
+              <p>Get features like inbuilt code editor video call feature and a lot more</p>
+            </CardContent> 
+        </Card>
+
+        {/* card 02*/}
+        <Card>
+          <CardHeader>
+            <CardTitle>Feature four</CardTitle>
+            <CardDescription>Feature 4</CardDescription>
+          </CardHeader>
+            <CardContent>
+              <p>Feature 4</p>
             </CardContent> 
         </Card>
       </section>
