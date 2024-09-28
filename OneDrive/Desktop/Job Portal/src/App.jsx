@@ -83,7 +83,7 @@ const router=createBrowserRouter([
           path: '/dashboard',  
           element: (
             <ProtectedRoutes> 
-              <DashboardPage /> {/* Add your dashboard here */}
+              <DashboardPage /> 
             </ProtectedRoutes>
           ),
         },

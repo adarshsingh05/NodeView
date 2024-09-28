@@ -13,6 +13,7 @@ const PieChart = ({ data }) => {
       {
         data: data,
         backgroundColor: ['#1c56f0', '#01f769', '#FF6384', '#36A2EB', '#FFCE56'],
+        borderColor: '#02060f',
         hoverOffset: 4,
       },
     ],
@@ -38,7 +39,7 @@ const PieChart = ({ data }) => {
         titleFont: { size: 16 }, // Tooltip title font size
         bodyFont: { size: 14 }, // Tooltip body font size
         bodyColor: '#ffffff', // Tooltip text color
-        displayColors: false, // Remove the color box in the tooltip
+        displayColors: true, // Remove the color box in the tooltip
       },
     },
     maintainAspectRatio: false, // Disable aspect ratio to prevent cutting off

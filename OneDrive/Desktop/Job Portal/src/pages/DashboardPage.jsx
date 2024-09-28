@@ -3,9 +3,42 @@ import { Button } from "@/components/ui/button";
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import React from "react";
+import Chart from "@/components/Chart";
+import ReferralsChart from "@/components/ReferralsChart";
 import PieChart from "@/components/PieChart";
 import LinkedInShareButton from "@/components/LinkedInShareButton";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline"; // Updated import
+import { Line } from "react-chartjs-2";
+
+
+// function for generating chart
+
+const generateDummyData = () => {
+  return {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    datasets: [
+      {
+        label: 'Interviews',
+        data: [3, 2, 4, 5, 6, 2, 3, 1, 0, 4, 3, 5], // Dummy data for interviews per month
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        fill: true,
+      },
+    ],
+  };
+};
+
+const InterviewChart = () => {
+  const data = generateDummyData();
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
+  return <Line data={data} options={options} />;
+};
 
 const DashboardPage = () => {
   const { user } = useUser();
@@ -42,6 +75,45 @@ const DashboardPage = () => {
     { reviewer: 'Recruiter X', comment: 'Would recommend for future projects.' },
     { reviewer: 'Recruiter Y', comment: 'Excellent coding ability, needs to work on time management.' },
   ];
+
+// Function to generate and download PDF
+const handleDownloadReport = () => {
+  const doc = new jsPDF();
+
+  // Add title
+  doc.setFontSize(20);
+  doc.text('Job Application Report', 10, 10);
+
+  // Add user name
+  doc.setFontSize(16);
+  doc.text('Name: ' + user?.firstName + ' ' + user?.lastName, 10, 20);
+
+  // Add application stats
+  doc.setFontSize(12);
+  doc.text('Application Stats:', 10, 30);
+  doc.text('- Applications Submitted: ' + applicationStats.submitted, 10, 40);
+  doc.text('- Total No of Interviews: ' + applicationStats.interviews, 10, 50);
+  doc.text('- No of Interviews Cleared: ' + applicationStats.interviewCleared, 10, 60);
+  doc.text('- No of Job Offers received: ' + applicationStats.offers, 10, 70);
+
+  // Add skill ratings
+  doc.text('Skill Ratings:', 10, 80);
+  skills.forEach((skill, index) => {
+    doc.text('- ' + skill.name + ': ' + skill.rating + '/5', 10, 90 + index * 10);
+  });
+
+  // Add recruiter reviews
+  doc.text('Recruiter Reviews:', 10, 120);
+  reviews.forEach((review, index) => {
+    doc.text('- ' + review.reviewer + ': ' + review.comment, 10, 130 + index * 10);
+  });
+
+  // Save the PDF
+  doc.save('Job_Application_Report.pdf');
+};
+
+
+
 
   return (
     <main className="flex flex-col gap-8 p-6">
@@ -144,7 +216,7 @@ const DashboardPage = () => {
               <LinkedInShareButton 
                 url="http://localhost:5173/dashboard"  // The URL to the dashboard page you want to share
               />
-              <Button className="flex items-center" variant="blue">
+              <Button className="flex items-center" variant="red" onClick={handleDownloadReport}>
                 <ArrowDownTrayIcon className="w-4 h-4 mr-1" />
                 Download Report
               </Button>
@@ -167,11 +239,62 @@ const DashboardPage = () => {
                 </div>
               ))}
             </CardContent>
+            <div className="flex justify-between items-center p-4">
+              <LinkedInShareButton 
+                url="http://localhost:5173/dashboard"  // The URL to the dashboard page you want to share
+              />
+              <Button className="flex items-center" variant="red" onClick={handleDownloadReport}>
+                <ArrowDownTrayIcon className="w-4 h-4 mr-1" />
+                Download Report
+              </Button>
+            </div>
           </Card>
         </section>
       </section>
+
+      {/* Section for showing the Interview Chart
+      <section className="flex-grow h-[320px] w-[50%]">
+        <Card className="bg-#020817 text-white h-[100%]">
+          <CardHeader>
+            <CardTitle className="p-2 border-b border-gray-600">Interviews Held Per Month</CardTitle>
+          </CardHeader>
+          <CardContent className="h-[95%]">
+            <InterviewChart className="h-[100%]"/>
+          </CardContent>
+        </Card>
+      </section> */}
+
+      {/* Section for showing the Interview and Referrals Charts */}
+      <section className="flex gap-6 h-[320px] w-full mt-5">
+        {/* Interviews Held Per Month Chart */}
+        <div className="w-1/2">
+          <Card className="bg-#020817 text-white h-[100%]">
+            <CardHeader>
+              <CardTitle className="p-2 border-b border-gray-600">Interviews Held Per Month</CardTitle>
+            </CardHeader>
+            <CardContent className="h-[95%]">
+              <InterviewChart className="h-[100%]" />
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Referrals Given and Received Chart */}
+        <div className="w-1/2">
+          <Card className="bg-#020817 text-white h-[100%]">
+            <CardHeader>
+              <CardTitle className="p-2 border-b border-gray-600">Referrals Given and Received</CardTitle>
+            </CardHeader>
+            <CardContent className="h-[95%]">
+              <ReferralsChart className="h-[100%]" />
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+    
     </main>
   );
-};
+}
+
 
 export default DashboardPage;
