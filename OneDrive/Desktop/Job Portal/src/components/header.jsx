@@ -7,6 +7,7 @@ import {UserButton } from '@clerk/clerk-react';
 import { SignedOut } from '@clerk/clerk-react';
 import { BriefcaseBusiness, PenBox } from 'lucide-react';
 import { useUser } from '@clerk/clerk-react';
+import { LayoutDashboard } from 'lucide-react';
 const Header = () => {
 // creating a state to handle buttons and over lay
  const [showSignIn, setShowSignIn]=useState(false);
@@ -45,14 +46,26 @@ useEffect(()=>{
       </SignedOut>
       <SignedIn>
 {/* show this button only when the user is recruiter so add a condition */}
-        {user?.unsafemetadata?.role==="recruiter" &&(
+        {user?.unsafeMetadata?.role==="recruiter" &&(
         <Link to="/post-jobs">
         <Button variant="red" className='rounded-full'> 
           {/* adding a logo */}
-          <PenBox size={20} className='mr-2'></PenBox>
-          Post a Job</Button>
+          <PenBox size={20} className='mr-2' />
+          Post Job</Button>
         </Link>
         )}
+
+        {/* for the joob seekers */}
+
+        {user?.unsafeMetadata?.role==="candidate" &&(
+          <Link to ="/dashboard">
+            <Button variant="blue" >
+            <LayoutDashboard size={20} className='mr-2 ' />
+            Dashboard
+            </Button>
+          </Link>
+        )}
+
         <UserButton
       //  adding more options to user Button 
          appearance={{

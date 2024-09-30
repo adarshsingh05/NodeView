@@ -62,15 +62,19 @@
 .wmde-markdown ul {
 
   padding-left: 25px;
-  color: white;
+  color: rgb(33, 79, 247);
+  /* background-color: #000000; */
+  list-style-type: disc;
 }
 
 
 .wmde-markdown {
   
   padding-left: 25px;
-  color: white;
+  /* color: white; */
+  /* color: #000000; */
 }
+
 
 @layer base {
   * {

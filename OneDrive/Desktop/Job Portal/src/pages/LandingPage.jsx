@@ -13,10 +13,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { useUser } from "@clerk/clerk-react";
 
 import { Card,CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 
 const LandingPage = () => {
+  const{user}=useUser();
   return (
     <main className='flex flex-col gap-10 sm:gap-20 py-10 sm:py-20'>
       <section className='text-center'>
@@ -45,7 +47,9 @@ const LandingPage = () => {
         </Link>
 
         <Link to='/post-jobs'>
-        <Button variant="red" size="xl">Post Projects</Button>
+        <Button variant="red" size="xl"
+        disabled={user?.unsafeMetadata?.role === "candidate"}>
+          Post Projects</Button>
         </Link>
  
       </div>
