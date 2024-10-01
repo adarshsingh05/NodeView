@@ -11,8 +11,13 @@ const AppLayout = () => {
       </main>  
 
       {/* creating a footer */}
-      <div className="p-10 text-center bg-gray-800 mt-10"> Made With Love By Adarsh Singh</div>
+      {/* <div className="p-10 text-center bg-gray-800 mt-10"> Made With Love By Adarsh Singh</div> */}
+      <div className="bg-gray-800 mt-10 flex flex-row justify-between"> 
+      <div>Left div</div>
+      <div>Right DIv</div>  
+      
       </div>
+      </div> 
   );
 };
 

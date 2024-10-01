@@ -20,7 +20,7 @@ import { Card,CardHeader, CardContent, CardTitle, CardDescription } from "@/comp
 const LandingPage = () => {
   const{user}=useUser();
   return (
-    <main className='flex flex-col gap-10 sm:gap-20 py-10 sm:py-20'>
+    <main className='flex flex-col gap-10 sm:gap-20 '>
       <section className='text-center'>
         <h1 className='flex flex-col items-center justify-center gradient-title text-3xl font-extrabold sm:text-5xl lg:text-7xl 
         tracking-tighter py-4'>
@@ -36,8 +36,7 @@ const LandingPage = () => {
           </span>
         </h1>
         <p className="text-grey-300 sm:mt-4 text-xs sm:text-xl">
-          Explore a Tons of Project Listings or Find a perfect Candidate for your project
-        </p>
+        Explore thousands of job listings or find the perfect candidate        </p>
       </section>
       <div className="flex gap-6 justify-center" >
         {/* button and linking to respective place-routing */}

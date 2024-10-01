@@ -34,9 +34,11 @@ useEffect(()=>{
   return (
   <>
     <nav className='py-4 flex justify-between items-center'>
-      <Link>
-      <img src='/logo.png' className='h-20'></img>
-      </Link>
+    <div>
+  <Link>
+    <img src='/logo.png' alt="V Jobs Logo" className="w-24 md:w-34 lg:w-40" />
+  </Link>
+</div>
       
     {/* handling the user authentication and the styling */}
 

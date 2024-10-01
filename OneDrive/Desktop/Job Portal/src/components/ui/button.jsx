@@ -18,7 +18,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         // adding custom style for the shadcn ui for collor of buttons
-        blue:"bg-blue-500 hover:bg-blue-600",
+       blue: "bg-blue-500 hover: bg-blue-600",
+
+        // blue:"bg-blue-500 hover:bg-blue-600",
         red: "bg-red-500 hover:bg-red-600",
         link: "text-primary underline-offset-4 hover:underline",
       },
