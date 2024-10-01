@@ -24,7 +24,7 @@ const LandingPage = () => {
       <section className='text-center'>
         <h1 className='flex flex-col items-center justify-center gradient-title text-3xl font-extrabold sm:text-5xl lg:text-7xl 
         tracking-tighter py-4'>
-          Find projects, showcase your skills {' '}
+          Find Opportunities, showcase your skills {' '}
          {/* making the image side by side */}
           <span className="flex items-center gap-2 sm:gap-6 ">
             and Get{" "}
@@ -42,13 +42,13 @@ const LandingPage = () => {
         {/* button and linking to respective place-routing */}
         <Link to='/jobs'>
         {/* adding th custom defined class into the button as variant */}
-        <Button variant='blue' size="xl">Find Projects</Button>
+        <Button variant='blue' size="xl">Find Jobs</Button>
         </Link>
 
         <Link to='/post-jobs'>
         <Button variant="red" size="xl"
         disabled={user?.unsafeMetadata?.role === "candidate"}>
-          Post Projects</Button>
+          Post Jobs</Button>
         </Link>
  
       </div>
@@ -79,6 +79,9 @@ const LandingPage = () => {
     </Carousel>
 
       {/* banner */}
+      <section>
+        <div className="text-center text-2xl sm:text-3xl font-bold mt-4 mb-2 "> Explore V-jobs' Exclusive Features</div>
+      </section>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* cards */}
         {/* card 01 */}
@@ -165,6 +168,9 @@ const LandingPage = () => {
           )
         })}
       </Accordion>
+
+  
+
 
 
     </main>
