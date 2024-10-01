@@ -5,7 +5,7 @@ import { CarouselContent } from "@/components/ui/carousel";
 import { CarouselItem } from "@/components/ui/carousel";
 import companies from '../data/companies.json'
 import faqs from '../data/faqs.json'
-
+import { CarouselSize } from "@/components/userReviews";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Accordion,
@@ -77,9 +77,7 @@ const LandingPage = () => {
       
       </CarouselContent>
     </Carousel>
-
-      {/* banner */}
-      <section>
+    <section>
         <div className="text-center text-2xl sm:text-3xl font-bold mt-4 mb-2 "> Explore V-jobs' Exclusive Features</div>
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -152,24 +150,121 @@ const LandingPage = () => {
             </CardContent> 
         </Card>
       </section>
+   
 
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mt-4 mb-2">Frequently Asked Questions</h2>
+      {/* banner */}
+      <section className="mt-12">
+  <div className="text-center">
+    <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+       Get Started with V-jobs in 4 simple Steps
+    </h2>
+  </div>
+  
+  {/* Responsive Timeline Container */}
+  <div className="flex flex-col md:flex-row md:overflow-x-auto md:py-4 md:space-x-8 space-y-8 md:space-y-0">
+    {/* Timeline Item */}
+    <div className="relative flex md:flex-col items-center text-center px-4 border p-3 border-gray-300 rounded-md">
+      <div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+</svg>
 
-      {/* accordians for Faqs getting from the json*/}
-      <Accordion type="single" collapsible>
-        {faqs.map((faq,index)=>{
-          return (
-            <AccordionItem key={index} value={`item-${index+1}`}>
+      </div>
+      <time className="text-sm font-normal text-gray-400 dark:text-gray-500">Step 01</time>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Create Account</h3>
+      <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+       Create an account on the V-jobs portal to access all the features for free!
+      </p>
+      {/* Connecting Line */}
+      <div className="hidden md:block absolute top-2/4 -right-8 md:w-8 h-1 bg-blue-500"></div>
+      <div >
+ </div>
+    </div>
+
+    {/* Timeline Item */}
+    <div className="relative flex md:flex-col items-center text-center p-3 px-4 border border-gray-300 rounded-md">
+      <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+</svg>
+</div>
+      <time className="text-sm font-normal text-gray-400 dark:text-gray-500">Step 02</time>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Onboarding</h3>
+      <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+        Mark Your presence with onboarding on the portal as a candidate or as a recruiter to move ahead
+      </p>
+      {/* Connecting Line */}
+      <div className="hidden md:block absolute top-2/4 -right-8 md:w-8 h-1 bg-blue-500"></div>
+      <div className="block md:hidden w-1 h-16 bg-blue-500 mt-4"></div>
+    </div>
+
+    {/* Timeline Item */}
+    <div className="relative flex md:flex-col items-center text-center p-3 px-4 border border-gray-300 rounded-md">
+      <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+</svg>
+</div>
+      <time className="text-sm font-normal text-gray-400 dark:text-gray-500">Step 03</time>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Apply / Post</h3>
+      <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+        If you are a candidate apply for the jobs else if you are a recruiter get ahead with post jobs section
+      </p>
+      {/* Connecting Line */}
+      <div className="hidden md:block absolute top-2/4 -right-8 md:w-8 h-1 bg-blue-500"></div>
+      <div className="block md:hidden w-1 h-16 bg-blue-500 mt-4"></div>
+    </div>
+
+    {/* Timeline Item */}
+    <div className="relative flex md:flex-col items-center text-center p-3 px-4 border border-gray-300 rounded-md">
+      <div> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9" />
+</svg>
+</div>
+      <time className="text-sm font-normal text-gray-400 dark:text-gray-500">Step 04</time>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Interview and Results</h3>
+      <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+        Interview your candidate or get interviewd by your recruiter and wait for the results to proceed
+      </p>
+      {/* No Line for the Last Item */}
+    </div>
+  </div>
+</section>
+
+{/* section for About us */}
+{/* <Card className="relative transition-transform transform-gpu duration-300 hover:scale-105 hover:z-50 group">
+  <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 hover:opacity-50 backdrop-blur-sm"></div>
+  <CardTitle className="text-center text-white text-2xl sm:text-3xl font-bold mb-3 mt-3 transition-colors duration-300 group-hover:bg-gradient-to-r group-hover:from-[#ce623c] group-hover:to-[#3b777f] group-hover:bg-clip-text group-hover:text-white">
+    About V-jobs
+  </CardTitle>
+  <CardContent className="text-white  transition-colors duration-300 group-hover:bg-gradient-to-r group-hover:from-[#ce623c] group-hover:to-[#3b777f] group-hover:bg-clip-text   group-hover:text-white">
+    Vjobs is a dynamic platform designed to connect freshers with exciting job opportunities at startups from India. Our mission is to empower both job seekers and recruiters by providing a seamless, user-friendly experience for discovering, showcasing, and filling job roles. Whether you’re looking to land your dream job or find the perfect candidate for your project, Vjobs is here to simplify the process and foster meaningful connections in the professional world.
+  </CardContent>
+</Card> */}
+
+{/* User Review section of the platform */}
+
+
+{/* accordion */}
+<div className='w-[100%]' >
+  <div className="text-center text-3xl font-extrabold mb-2">What Our Users have to say about us </div>
+  <div className="h-1 w-[100%] " variant="blue"></div>
+<CarouselSize />
+</div>
+<div className="text-center">
+    <h2 className="text-2xl sm:text-3xl font-bold ">
+       Frequently Asked Questions
+    </h2>
+  </div>
+<Accordion type="multiple" className="w-full">
+        {faqs.map((faq, index) => (
+          <AccordionItem key={index} value={`item-${index + 1}`}>
             <AccordionTrigger>{faq.question}</AccordionTrigger>
-            <AccordionContent>
-              {faq.answer}
-            </AccordionContent>
+            <AccordionContent>{faq.answer}</AccordionContent>
           </AccordionItem>
-          )
-        })}
+        ))}
       </Accordion>
 
-  
+
+
 
 
 
