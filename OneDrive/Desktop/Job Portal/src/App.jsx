@@ -14,6 +14,7 @@ import JobPage from './pages/jobs';
 import PostJobs from './pages/post-jobs';
 import { ThemeProvider } from './components/theme-provider';
 import ProtectedRoutes from './components/protected-routes';
+import InterviewRoom from './pages/InterviewRoom';
 // defining the router dom and creating athe route for the multi pages app.
 const router=createBrowserRouter([
   {
@@ -52,6 +53,14 @@ const router=createBrowserRouter([
         element:(
           <ProtectedRoutes>  
         <JobListing/>
+        </ProtectedRoutes>) 
+      },
+      {
+        path:'/interviewroom', 
+       
+        element:(
+          <ProtectedRoutes>  
+        <InterviewRoom/>
         </ProtectedRoutes>) 
       },
       {
