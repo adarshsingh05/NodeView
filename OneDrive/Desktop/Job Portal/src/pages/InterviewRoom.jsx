@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import GithubStyleHeatmap from '@/components/GithubStyleHeatmap';
 
 const InterviewRoom = () => {
     const navigate = useNavigate();
@@ -70,6 +71,9 @@ const InterviewRoom = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <GithubStyleHeatmap/>
       </div>
     </div>
   );
