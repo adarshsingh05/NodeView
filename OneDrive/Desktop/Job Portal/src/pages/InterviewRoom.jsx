@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import GithubStyleHeatmap from '@/components/GithubStyleHeatmap';
 
 const InterviewRoom = () => {
     const navigate = useNavigate();
@@ -74,8 +73,41 @@ const InterviewRoom = () => {
       </div>
       <div>
 
-        <div className='text-center text-xl font-semibold mb-4 mt-14'> Your Login Consistency</div>
-        <div className='rounded-md bg-[#020817]  w-full border-[3px] border-[#c16947] mb-8 lg:mb-0'>  <GithubStyleHeatmap/></div>
+       {/* other sections */}
+            {/* section 02 */}
+
+            <section>
+          {/* line */}
+          <div className="hidden  lg:block w-[100%] bg-blue-500 h-[2px] mx-5 mt-5"></div>
+          {/* overall div */}
+          <div className='flex flex-row justify-between'>
+          {/* left div for  */}
+            <div className='mt-6'>
+                <div className='rounded-md bg-[#020817] lg:w-[55%] w-full border-[3px] border-[#c16947] mb-8 lg:mb-0 ml-6'>
+                  <div className='bg-white dark:bg-gray-600 h-[15%] py-4'>
+                    <h2 className="text-xl font-extrabold mb-4 text-center">V-Jobs Interctive Whiteboard</h2>
+                  </div>
+                  <div className='flex flex-col lg:flex-row justify-between'>
+                    <div className='w-[40%] h-[35%] mx-auto lg:mx-0'>
+                      <img src='public/whiteboard.png' alt='code editor' />
+                    </div>
+                    <div className='text-center text-xl font-bold mt-4 lg:mt-16 lg:mr-8'>
+                      Real Time Interactive whiteboard
+                    </div>
+                  </div>
+                  <p className='text-center'>
+                      Explore V-Jobs exclusive realtime whiteboard for communication.Explain your thaughts visually and make it more apealling                  </p>
+                  <Button
+                    variant="blue" onClick={() => navigate('/userpage')}
+                    className='text-center ml-[32%] mt-4 mb-3'>
+                    <p className='text-l'>Open WhiteBoard</p>
+                  </Button>
+                </div>
+            </div>
+            <div>Your ucomming events</div>
+            {/* div to add the ucomming task */}
+            </div>
+        </section>
       </div>
     </div>
   );

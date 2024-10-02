@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import React from "react";
+import GithubStyleHeatmap from "@/components/GithubStyleHeatmap";
 import Chart from "@/components/Chart";
 import ReferralsChart from "@/components/ReferralsChart";
 import PieChart from "@/components/PieChart";
@@ -291,6 +292,10 @@ const handleDownloadReport = () => {
         </div>
       </section>
 
+      <div className='text-center text-xl font-semibold mb-4 mt-14'> Your Login Consistency</div>
+      <div className='rounded-md bg-[#020817]  w-full border-[3px] border-[#70c9d9] mb-8 lg:mb-0'>  <GithubStyleHeatmap/></div>
+
+   
     
     </main>
   );
