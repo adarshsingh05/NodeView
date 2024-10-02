@@ -90,11 +90,15 @@ return (
         <p className='text-center'>
           This is V-Jobs own code editor supporting multiple languages. An AI powered code editor that allows you to check code plagiarism in real-time.
         </p>
-        <Button
-          variant="blue" onClick={() => navigate('/userpage')}
-          className='text-center ml-[32%] mt-4 mb-3'>
-          <p className='text-l'>Open Live Code Editor</p>
-        </Button>
+        <a href="https://code-editor-tan-psi.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <Button
+            variant="blue"
+            className="text-center ml-[32%] mt-4 mb-3"
+          >
+            <p className="text-l">Open Live Code Editor</p>
+          </Button>
+      </a>
+
       </div>
 
       {/* Separator Div */}
@@ -118,11 +122,16 @@ return (
               <p className='text-center mt-7'>
                 Explore V-Jobs exclusive real-time whiteboard for communication. Explain your thoughts visually and make it more appealing.
               </p>
+
+             
+
+              
             <Button
-              variant="blue" onClick={() => navigate('/userpage')}
+              variant="blue"  onClick={() => navigate('/whiteboard')}
               className='text-center ml-[32%] mt-7 mb-3'>
               <p className='text-l'>Open Whiteboard</p>
             </Button>
+          
           </div>
       </div>
 
