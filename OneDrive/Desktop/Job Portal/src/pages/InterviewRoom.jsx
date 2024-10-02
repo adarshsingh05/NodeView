@@ -3,8 +3,11 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const InterviewRoom = () => {
+    const navigate = useNavigate();
     const { user } = useUser();
 
 
@@ -21,7 +24,20 @@ const InterviewRoom = () => {
             </div>
             <div className='rounded-md bg-[#020817] w-[33%] border-[3px] border-[#c16947]'>
                 <div className='  bg-white dark:bg-gray-600 h-[15%] py-4'>
-                    <h2 className="text-l font-extrabold mb-4 text-center "> V-Jobs Live Code Editor </h2> 
+                    <h2 className="text-xl font-extrabold mb-4 text-center "> V-Jobs Live Code Editor </h2> 
+                </div>
+                {/* div for image and heading */}
+                <div className='flex flex-row justify-between'>
+                    <div className='w-[40%] h-[35%]'> <img src='public/codeeditorimage.png'></img></div>
+                    <div className='text-center text-xl font-bold  mt-16 mr-8'> AI Powered Code Editor</div>
+                </div>
+                <div>
+                    <p className='text-center'> This is V-Jobs own code editor supporting multiple languages. An AI powered code editor that allow you to check the code plagarism in real time</p>
+                    <Button
+                    variant="blue" onClick={() => navigate('/userpage')}
+                    className='text-center ml-[32%] mt-4'>
+                       <p className='text-l'>Open Live Code Editor</p>
+                    </Button>
                 </div>
             </div>
 
@@ -29,7 +45,7 @@ const InterviewRoom = () => {
 
                 <div className="flex justify-center items-center ">
                     <div className="  bg-white dark:bg-gray-600  ">
-                        <h2 className="text-l font-extrabold mb-4 mt-4 text-center ">Your Calender</h2>
+                        <h2 className="text-xl font-extrabold mb-4 mt-4 text-center ">Your Calender</h2>
                         <Calendar
                         onChange={setDate}
                         value={date}
