@@ -4,7 +4,6 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import { format } from 'date-fns';
 
 const GithubStyleHeatmap = () => {
-
   // Dummy data
   const values = [
     { date: '2024-01-01', count: 1 },
@@ -28,6 +27,7 @@ const GithubStyleHeatmap = () => {
           if (value.count >= 1) {
             return 'fill-green-600'; // Light green for 1 count
           }
+          return 'fill-green-900'; // Default case (for counts greater than 1)
         }}
         showWeekdayLabels={false} // Disable weekday labels (Mon, Tue, etc.)
         showMonthLabels={true} // Month labels will remain
@@ -37,17 +37,18 @@ const GithubStyleHeatmap = () => {
             'data-tip': value.date ? `${format(new Date(value.date), 'yyyy-MM-dd')}: ${value.count} logins` : 'No logins',
           };
         }}
+        style={{
+          width: '8px', // Adjust the width of each day box
+          height: '8px', // Adjust the height of each day box
+          marginRight: '2px', // Adjust margin between the days
+          marginBottom: '2px', // Adjust margin between the rows
+        }}
       />
       {/* Add custom margins between months */}
-      <style jsx>{`
+      <style global jsx>{`
         .react-calendar-heatmap .react-calendar-heatmap-month-label {
           margin-bottom: 16px; /* Add margin between month labels and heatmap */
-          font-size: 8px;
-        }
-        .react-calendar-heatmap .react-calendar-heatmap-day {
-          margin-right: 6px; /* Add small margin between the days */
-          margin-bottom: 2px;
-          
+          font-size: 8px; /* Adjust the font size if needed */
         }
       `}</style>
     </div>

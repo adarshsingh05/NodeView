@@ -73,7 +73,9 @@ const InterviewRoom = () => {
         </div>
       </div>
       <div>
-        <GithubStyleHeatmap/>
+
+        <div className='text-center text-xl font-semibold mb-4 mt-14'> Your Login Consistency</div>
+        <div className='rounded-md bg-[#020817]  w-full border-[3px] border-[#c16947] mb-8 lg:mb-0'>  <GithubStyleHeatmap/></div>
       </div>
     </div>
   );
