@@ -47,7 +47,7 @@ const Notes = () => {
 
   return (
     <Card className='p-1 mb-6'>
-      <h2 className='text-xl font-bold mb-4 text-center rounded-md border-[3px] border-[#41767c]'>Notes</h2>
+      <h2 className='text-xl font-bold mb-4 text-center rounded-md border-[3px] border-[#41767c]'>Add Your Notes</h2>
       <Input
         value={title}
         onChange={(e) => setTitle(e.target.value)}

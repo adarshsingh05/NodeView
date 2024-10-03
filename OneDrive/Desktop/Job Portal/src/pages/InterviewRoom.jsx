@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 import Notes from '@/components/Notes';
+import { useEffect } from 'react';
 
 
 
@@ -13,6 +14,7 @@ const InterviewRoom = () => {
   const navigate = useNavigate();
   const { user } = useUser();
   const [date, setDate] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(true); // Declare the loading state
 
   // interview meet
   const[value, setValue] = useState();
@@ -76,6 +78,32 @@ navigate(`/room/${value}`)
           task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
       )));
   };
+
+  // for rendering the video
+  useEffect(() => {
+    // Set a timer to hide the loading screen after 4 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 6000); 
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <video
+          autoPlay
+          muted
+          style={{ width: '100%', height: 'auto' }}
+        >
+          <source src="public/video.mp4" type="video/mp4" />
+          Your browser is too Old Lad.
+        </video>
+      </div>
+    );
+  }
 
 return (
   <div>
@@ -169,12 +197,11 @@ Excess the features of live one - on - one video call completely for free powere
                       Real-Time Interactive Whiteboard
                     </div>
                 </div>
-              <p className='text-center mt-7'>
+                <p className='text-center mt-8 text-s sm:text-sm md:text-base lg:text-["17px"]'>
                 Explore V-Jobs exclusive real-time whiteboard for communication. Explain your thoughts visually and make it more appealing.
               </p>
 
-             
-
+            
               
             <Button
               variant="blue"  onClick={() => navigate('/whiteboard')}

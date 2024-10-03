@@ -129,15 +129,17 @@ const LandingPage = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-0">
         {/* cards */}
         {/* card 01 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Interview Room</CardTitle>
-            <CardDescription>Get Our all new personalised Interview Room</CardDescription>
-          </CardHeader>
-            <CardContent>
-              <p>Get features like inbuilt code editor video call feature and a lot more</p>
-            </CardContent> 
-        </Card>
+      <Link to="/interviewroom"> {/* Wrap the Card component with Link */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Interview Room</CardTitle>
+          <CardDescription>Get Our all new personalised Interview Room</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Get features like inbuilt code editor, video call feature, and a lot more</p>
+        </CardContent>
+      </Card>
+    </Link>
 
         {/* card 02*/}
         <Card>
