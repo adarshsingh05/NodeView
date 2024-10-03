@@ -27,6 +27,7 @@
     "@tanstack/react-table": "^8.20.5",
     "@tldraw/tldraw": "^2.0.0-alpha.19",
     "@uiw/react-md-editor": "^4.0.4",
+    "@zegocloud/zego-uikit-prebuilt": "^2.10.0",
     "add": "^2.0.6",
     "chart.js": "^4.4.4",
     "class-variance-authority": "^0.7.0",

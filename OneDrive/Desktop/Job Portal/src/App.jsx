@@ -16,6 +16,8 @@ import { ThemeProvider } from './components/theme-provider';
 import ProtectedRoutes from './components/protected-routes';
 import InterviewRoom from './pages/InterviewRoom';
 import Whiteboard from './pages/Whiteboard';
+import HomePage from './components/home';
+import RoomPage from './components/room';
 // defining the router dom and creating athe route for the multi pages app.
 const router=createBrowserRouter([
   {
@@ -31,6 +33,22 @@ const router=createBrowserRouter([
         element: (
         <ProtectedRoutes> 
           <Onboarding/>
+        </ProtectedRoutes>)
+        
+      },
+      {
+        path:'/homepage',  
+        element: (
+        <ProtectedRoutes> 
+          <HomePage/>
+        </ProtectedRoutes>)
+        
+      },
+      {
+        path:'//room/:roomId',  
+        element: (
+        <ProtectedRoutes> 
+          <RoomPage/>
         </ProtectedRoutes>)
         
       },

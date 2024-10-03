@@ -4,11 +4,21 @@ import 'react-calendar/dist/Calendar.css';
 import { useUser } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
+
+
 
 const InterviewRoom = () => {
   const navigate = useNavigate();
   const { user } = useUser();
   const [date, setDate] = useState(new Date());
+
+  // interview meet
+  const[value, setValue] = useState();
+  const navigater = useNavigate()
+  const handlejoinRoom =useCallback(()=>{
+navigate(`/room/${value}`)
+  },[navigater,value])
 
   // Define the tasks array
   const initialTasks = [
@@ -73,7 +83,40 @@ return (
     </div>
     <div className='flex flex-col lg:flex-row w-full lg:justify-between items-center'>
       {/* GMeet Div */}
-    <div className='rounded-md bg-[#020817] lg:w-[33%] w-full border-[3px] border-[#41767c] mb-8 lg:mb-0 mr-3' >hey there</div>
+    <div className='rounded-md lg:w-[33%] w-full border-[3px] border-[#41767c] mb-8 lg:mb-0 mr-3' >
+        <div className='bg-white dark:bg-gray-600 h-[15%] py-4'>
+          <h2 className="text-xl font-extrabold mb-4 text-center">Quick Connect</h2>
+        </div>
+        <div className='flex flex-col lg:flex-row justify-between'>
+          <div className='w-[35%] h-[31%] mx-auto lg:mx-0'>
+            <img src='public/vc.png' alt='code editor' />
+          </div>
+          <div className='text-center text-xl font-bold mt-4 lg:mt-16 lg:mr-8'>
+            One-on- One Video Call
+          </div>
+        </div>
+        <p className='text-center'>
+Excess the features of live one - on - one video call completely for free powered by V-jobs along with free and secured chat features. This also allows you to share your screen in realtime        </p>
+        <div className='mt-3 ml-3 mb-3 flex flex-row justify-around'>
+            <div className='mt-2'>
+              <input value={value} 
+              onChange={(e)=>setValue(e.target.value)}  
+              type='text' 
+              placeholder='Enter code given by recruiter'
+              className='h-8 text-blue-700 rounded-sm border-[1px] border-[#41767c]' />
+            </div>
+            <div className='mt-1'>
+              <Button
+              variant='red'
+              onClick={handlejoinRoom}>Connect
+              </Button>
+            </div>
+        
+        </div>
+
+      </div>
+      
+    
       {/* Code Editor Div */}
       <div className='rounded-md bg-[#020817] lg:w-[33%] w-full border-[3px] border-[#c16947] mb-8 lg:mb-0'>
         <div className='bg-white dark:bg-gray-600 h-[15%] py-4'>
