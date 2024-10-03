@@ -5,6 +5,7 @@ import { useUser } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
+import Notes from '@/components/Notes';
 
 
 
@@ -67,6 +68,7 @@ navigate(`/room/${value}`)
   ];
 
   const [tasks, setTasks] = useState(initialTasks);
+  const isRecruiter = user?.unsafeMetadata?.role === 'recruiter';
 
   // Toggle task completion status
   const toggleTaskCompletion = (taskId) => {
@@ -78,8 +80,12 @@ navigate(`/room/${value}`)
 return (
   <div>
     {/* gmeet, code editor and calendar */}
-    <div className='gradient-title text-2xl font-extrabold sm:text-4xl lg:text-5xl text-center mb-12'>
+    <div className='  gradient-title text-2xl font-extrabold sm:text-4xl lg:text-5xl text-center mb-12'>
       Welcome to the Interview Room, <span className='bg-gradient-to-r from-[#c96844] to-[#3b777f] bg-clip-text'>{user?.firstName}!!</span>
+      <div  className='gradient-title text-xl  sm:text-2xl lg:text-3xl text-center mb-2 mt-4'>
+      Hope you are doing good with {isRecruiter ? 'Recruitment Process' : 'Interviews'} !
+      </div>
+
     </div>
     <div className='flex flex-col lg:flex-row w-full lg:justify-between items-center'>
       {/* GMeet Div */}
@@ -133,6 +139,7 @@ Excess the features of live one - on - one video call completely for free powere
         <p className='text-center'>
           This is V-Jobs own code editor supporting multiple languages. An AI powered code editor that allows you to check code plagiarism in real-time.
         </p>
+        
         <a href="https://code-editor-tan-psi.vercel.app/" target="_blank" rel="noopener noreferrer">
           <Button
             variant="blue"
@@ -183,12 +190,12 @@ Excess the features of live one - on - one video call completely for free powere
 
     <section>
       {/* Line */}
-      <div className="hidden lg:block w-[100%] bg-blue-500 h-[2px] mx-5 mt-5"></div>
+      <div className="hidden lg:block w-[100%] bg-blue-500 h-[2px] mt-5"></div>
 
       {/* Overall div */}
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-4  '>
          {/* Calendar Div */}
-        <div className='rounded-md   lg:w-[85%] w-full  border-[#c16947] mb-2 lg:mb-0 ml-6'>
+        {/* <div className='rounded-md   lg:w-[85%] w-full  border-[#c16947] mb-2 lg:mb-0 ml-6'>
           <div className="flex justify-center items-center h-[90]">
             <div className="">
                   <h2 className="text-xl font-extrabold mb-4 mt-4 text-center w-full">Your Calendar</h2>
@@ -202,7 +209,10 @@ Excess the features of live one - on - one video call completely for free powere
                   </p>
             </div>
           </div>
-        </div> 
+        </div>  */}
+        <div className='rounded-md   lg:w-[85%] w-full  border-[#c16947] mb-2 lg:mb-0 ml-6 mt-4'>
+              <Notes/>
+            </div>
 
         {/* Your Upcoming Events Section */}
         <div className='flex flex-col '>
@@ -229,6 +239,7 @@ Excess the features of live one - on - one video call completely for free powere
                 ))}
               </div>
             </div>
+            
           </div>
 
 
