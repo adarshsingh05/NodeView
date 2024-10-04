@@ -3,11 +3,14 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from './ui/button';
 import { SignedIn, SignIn } from '@clerk/clerk-react';
 import { SignInButton } from '@clerk/clerk-react';
-import {UserButton } from '@clerk/clerk-react';
+import { LayoutDashboard } from 'lucide-react';
+import { UserButton } from '@clerk/clerk-react';
+// import { SignedOut } from '@clerk/clerk-react';
+import { MenubarDemo } from './menubar';
 import { SignedOut } from '@clerk/clerk-react';
 import { BriefcaseBusiness, PenBox } from 'lucide-react';
 import { useUser } from '@clerk/clerk-react';
-import { LayoutDashboard } from 'lucide-react';
+// import { LayoutDashboard } from 'lucide-react';
 const Header = () => {
 // creating a state to handle buttons and over lay
  const [showSignIn, setShowSignIn]=useState(false);
@@ -38,6 +41,9 @@ useEffect(()=>{
   <Link>
     <img src='/logo.png' alt="V Jobs Logo" className="w-24 md:w-34 lg:w-40" />
   </Link>
+</div>
+<div>
+  <MenubarDemo/>
 </div>
       
     {/* handling the user authentication and the styling */}
