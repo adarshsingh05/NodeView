@@ -18,127 +18,132 @@ import InterviewRoom from './pages/InterviewRoom';
 import Whiteboard from './pages/Whiteboard';
 import HomePage from './components/home';
 import RoomPage from './components/room';
-// defining the router dom and creating athe route for the multi pages app.
-const router=createBrowserRouter([
+import { ApplicationProvider } from './context/applicationContext';
+// Defining the router dom and creating the route for the multi pages app.
+const router = createBrowserRouter([
   {
-    element: <AppLayout/>,
-    // all the routes will be inside the children pages
-    children:[
+    element: <AppLayout />,
+    // All the routes will be inside the children pages
+    children: [
       {
-        path:'/',  
-        element: <LandingPage/>
+        path: '/',  
+        element: <LandingPage />
       },
       {
-        path:'/onboarding',  
-        element: (
-        <ProtectedRoutes> 
-          <Onboarding/>
-        </ProtectedRoutes>)
-        
-      },
-      {
-        path:'/homepage',  
-        element: (
-        <ProtectedRoutes> 
-          <HomePage/>
-        </ProtectedRoutes>)
-        
-      },
-      {
-        path:'//room/:roomId',  
-        element: (
-        <ProtectedRoutes> 
-          <RoomPage/>
-        </ProtectedRoutes>)
-        
-      },
-      {
-        path:'/saved-jobs',  
+        path: '/onboarding',  
         element: (
           <ProtectedRoutes> 
-            <SavedJobs/>
-          </ProtectedRoutes>)
-      },
-      {
-        path:'/job-listing',  
-        element: (
-          <ProtectedRoutes> 
-            <JobListing/>
-          </ProtectedRoutes>)
-      },
-      {
-        path:'/jobs', 
-       
-        element:(
-          <ProtectedRoutes>  
-        <JobListing/>
-        </ProtectedRoutes>) 
-      },
-      {
-        path:'/whiteboard', 
-       
-        element:(
-          <ProtectedRoutes>  
-        <Whiteboard/>
-        </ProtectedRoutes>) 
-      },
-      {
-        path:'/interviewroom', 
-       
-        element:(
-          <ProtectedRoutes>  
-        <InterviewRoom/>
-        </ProtectedRoutes>) 
-      },
-      {
-      path:'/my-jobs',  
-      element: (
-        <ProtectedRoutes> 
-          <MyJobs/>
-        </ProtectedRoutes>)
-      },
-      {
-        path:'/post-jobs',  
-        element: (
-          <ProtectedRoutes> 
-            <PostJobs/>
-          </ProtectedRoutes>)
-        },
-        {
-// will go to the job page newly created and fetch with some id
-
-          path: "/job/:id",
-          element :(
-            <ProtectedRoutes> 
-            <JobPage/>
+            <Onboarding />
           </ProtectedRoutes>
-            
-          )
-        },
-        {
-          path: '/dashboard',  
-          element: (
-            <ProtectedRoutes> 
-              <DashboardPage /> 
-            </ProtectedRoutes>
-          ),
-        },
-        {
-          path: '/userpage',
-          element: (
-            <ProtectedRoutes>
-              <UserPage/>
-            </ProtectedRoutes>
-          )
-        }
+        )
+      },
+      {
+        path: '/homepage',  
+        element: (
+          <ProtectedRoutes> 
+            <HomePage />
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/room/:roomId',  
+        element: (
+          <ProtectedRoutes> 
+            <RoomPage />
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/saved-jobs',  
+        element: (
+          <ProtectedRoutes> 
+            <SavedJobs />
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/job-listing',  
+        element: (
+          <ProtectedRoutes> 
+            <JobListing />
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/jobs', 
+        element: (
+          <ProtectedRoutes>  
+            <JobListing />
+          </ProtectedRoutes>
+        ) 
+      },
+      {
+        path: '/whiteboard', 
+        element: (
+          <ProtectedRoutes>  
+            <Whiteboard />
+          </ProtectedRoutes>
+        ) 
+      },
+      {
+        path: '/interviewroom', 
+        element: (
+          <ProtectedRoutes>  
+            <InterviewRoom />
+          </ProtectedRoutes>
+        ) 
+      },
+      {
+        path: '/my-jobs',  
+        element: (
+          <ProtectedRoutes> 
+            <MyJobs />
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/post-jobs',  
+        element: (
+          <ProtectedRoutes> 
+            <PostJobs />
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: "/job/:id",
+        element: (
+          <ProtectedRoutes> 
+            <JobPage />
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/dashboard',  
+        element: (
+          <ProtectedRoutes> 
+            <DashboardPage /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/userpage',
+        element: (
+          <ProtectedRoutes>
+            <UserPage />
+          </ProtectedRoutes>
+        )
+      }
     ],
   },
 ]);
+
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <ApplicationProvider> {/* Wrapping the entire app with ApplicationProvider */}
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </ApplicationProvider>
   );
 }
 

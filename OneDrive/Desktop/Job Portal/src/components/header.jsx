@@ -42,8 +42,8 @@ useEffect(()=>{
     <img src='/logo.png' alt="V Jobs Logo" className="w-24 md:w-34 lg:w-40" />
   </Link>
 </div>
-<div>
-  <MenubarDemo/>
+<div className='h-full w-full lg:flex hidden ml-[110px]' >
+  <MenubarDemo />
 </div>
       
     {/* handling the user authentication and the styling */}

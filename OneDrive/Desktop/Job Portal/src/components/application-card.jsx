@@ -17,6 +17,8 @@ import {
 import { updateApplicationStatus } from "@/api/apiApplication";
 import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
+import { Icon } from "lucide-react";
+import { ClockIcon } from "lucide-react";
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
   const handleDownload = () => {
@@ -45,10 +47,13 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
           {isCandidate
             ? `${application?.job?.title} at ${application?.job?.company?.name}`
             : application?.name}
+
+     
           <Download
             size={18}
             className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer"
             onClick={handleDownload}
+            
           />
         </CardTitle>
       </CardHeader>
@@ -70,6 +75,17 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
       </CardContent>
       <CardFooter className="flex justify-between">
         <span>{new Date(application?.created_at).toLocaleString()}</span>
+
+        <div className="flex flex-row">
+             
+             <button>
+             <ClockIcon size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" /> 
+             </button>
+               
+             <div className="text-center text-md font-bold ml-4 mt-1 cursor-pointer"> Schedule a Meet</div>
+                
+             
+             </div>
         {isCandidate ? (
           <span className="capitalize font-bold">
             Status: {application.status}

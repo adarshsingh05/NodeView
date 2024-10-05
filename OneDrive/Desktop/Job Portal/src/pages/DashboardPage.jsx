@@ -10,6 +10,7 @@ import PieChart from "@/components/PieChart";
 import LinkedInShareButton from "@/components/LinkedInShareButton";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline"; // Updated import
 import { Line } from "react-chartjs-2";
+import { useApplicationContext } from "@/context/applicationContext";
 
 
 // function for generating chart
@@ -42,6 +43,7 @@ const InterviewChart = () => {
 };
 
 const DashboardPage = () => {
+  const { applicationCount, interviewingCount,hiredCount, rejectedCount } = useApplicationContext();
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -56,10 +58,10 @@ const DashboardPage = () => {
   ];
 
   const applicationStats = {
-    submitted: 15,
-    interviews: 5,
-    interviewCleared: 2,
-    offers: 2,
+    submitted: applicationCount,
+    interviews: interviewingCount,
+    interviewCleared: hiredCount,
+    offers: rejectedCount,
   };
 
   const data = [
@@ -76,6 +78,9 @@ const DashboardPage = () => {
     { reviewer: 'Recruiter X', comment: 'Would recommend for future projects.' },
     { reviewer: 'Recruiter Y', comment: 'Excellent coding ability, needs to work on time management.' },
   ];
+
+  // <h1>hii:  {props.acount}</h1>
+  // console.log(props.acount);
 
 // Function to generate and download PDF
 const handleDownloadReport = () => {
@@ -122,6 +127,10 @@ const handleDownloadReport = () => {
         <h1 className="text-4xl font-bold text-white">Welcome, {user?.firstName} !!</h1>
         <p className="text-gray-400 mt-2">Manage your job applications and portfolio</p>
       </header>
+
+      <div>
+      <h3>Summary: {applicationCount} applications submitted</h3>
+    </div>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
         {/* Job Applications Card */}
@@ -171,7 +180,7 @@ const handleDownloadReport = () => {
               <p className="text-lg text-center">Applications Submitted: {applicationStats.submitted}</p>
               <p className="text-lg text-center">Total No of Interviews: {applicationStats.interviews}</p>
               <p className="text-lg text-center">No of Interviews Cleared: {applicationStats.interviewCleared}</p>
-              <p className="text-lg text-center">No of Job Offers received: {applicationStats.offers}</p>
+              <p className="text-lg text-center">No of Application Rejected: {applicationStats.offers}</p>
             </CardContent>
           </Card>
         </section>

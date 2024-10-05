@@ -120,8 +120,11 @@ const JobPage = () => {
         <div className="flex flex-col gap-2">
           <h2 className="font-bold mb-4 text-xl ml-1">Applications</h2>
           {job?.applications.map((application) => {
-            return (
+            return (<>
               <ApplicationCard key={application.id} application={application} />
+
+              </>
+              
             );
           })}
         </div>
