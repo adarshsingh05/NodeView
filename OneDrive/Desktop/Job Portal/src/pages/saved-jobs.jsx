@@ -45,7 +45,9 @@ const SavedJobs = () => {
               );
             })
           ) : (
-            <div>No Saved Jobs 👀</div>
+            <div className="text-center flex flex-row justify-evenly">
+            <div >No Jobs Found 😢</div>
+            </div>
           )}
         </div>
       )}

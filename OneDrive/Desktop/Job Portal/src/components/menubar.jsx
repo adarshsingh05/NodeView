@@ -36,9 +36,9 @@ export function MenubarDemo() {
             </MenubarMenu>
 
             <MenubarMenu>
-            <Link to="/chats">
+            <Link to="/user-schedule">
                 <MenubarTrigger className="font-bold h-full flex items-center cursor-pointer">
-                    Chats
+                    My Schedule
                 </MenubarTrigger>
             </Link>
             </MenubarMenu>

@@ -3,6 +3,7 @@ import './App.css'
 
 // map
 import UserPage  from './pages/UserPage';
+import SchedulePage from './pages/SchedulePage'
 import DashboardPage from './pages/DashboardPage';
 import AppLayout from './layout/AppLayout';
 import LandingPage from './pages/LandingPage';
@@ -122,6 +123,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoutes> 
             <DashboardPage /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/user-schedule',  
+        element: (
+          <ProtectedRoutes> 
+            <SchedulePage /> 
           </ProtectedRoutes>
         )
       },

@@ -127,10 +127,11 @@ const handleDownloadReport = () => {
         <h1 className="text-4xl font-bold text-white">Welcome, {user?.firstName} !!</h1>
         <p className="text-gray-400 mt-2">Manage your job applications and portfolio</p>
       </header>
-
-      <div>
-      <h3>Summary: {applicationCount} applications submitted</h3>
+<div className="texte-center text-xl flex flex-row justify-evenly">
+      <div >
+      <h3 >Summary - {applicationCount} Applications Submitted</h3>
     </div>
+</div>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
         {/* Job Applications Card */}

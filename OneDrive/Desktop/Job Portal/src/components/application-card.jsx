@@ -1,26 +1,17 @@
-/* eslint-disable react/prop-types */
-import { Boxes, BriefcaseBusiness, Download, School } from "lucide-react";
+import { useState } from "react";
+import { Boxes, BriefcaseBusiness, Download, School, ClockIcon } from "lucide-react";
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+  Card, CardContent, CardFooter, CardHeader, CardTitle,
 } from "./ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { updateApplicationStatus } from "@/api/apiApplication";
 import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
-import { Icon } from "lucide-react";
-import { ClockIcon } from "lucide-react";
+import ViewSchedule from "./ViewSchedule"; // Import the new ViewSchedule component
+import { useUser } from "@clerk/clerk-react";
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
+  const [viewSchedule, setViewSchedule] = useState(false); // State to track schedule viewing
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = application?.resume;
@@ -39,6 +30,11 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
     fnHiringStatus(status).then(() => fnHiringStatus());
   };
 
+  // Toggle viewing schedule
+  const handleScheduleClick = () => {
+    setViewSchedule(!viewSchedule);
+  };
+
   return (
     <Card>
       {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
@@ -47,21 +43,17 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
           {isCandidate
             ? `${application?.job?.title} at ${application?.job?.company?.name}`
             : application?.name}
-
-     
           <Download
             size={18}
             className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer"
             onClick={handleDownload}
-            
           />
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 flex-1">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="flex gap-2 items-center">
-            <BriefcaseBusiness size={15} /> {application?.experience} years of
-            experience
+            <BriefcaseBusiness size={15} /> {application?.experience} years of experience
           </div>
           <div className="flex gap-2 items-center">
             <School size={15} />
@@ -76,25 +68,20 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
       <CardFooter className="flex justify-between">
         <span>{new Date(application?.created_at).toLocaleString()}</span>
 
-        <div className="flex flex-row">
-             
-             <button>
-             <ClockIcon size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" /> 
-             </button>
-               
-             <div className="text-center text-md font-bold ml-4 mt-1 cursor-pointer"> Schedule a Meet</div>
-                
-             
-             </div>
+        <div className="flex flex-row items-center">
+          <button onClick={handleScheduleClick}>
+            <ClockIcon size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" />
+          </button>
+          <div className="text-center text-md font-bold ml-4 mt-1 cursor-pointer">
+            {viewSchedule ? 'Hide Schedule' : "Schedule a Meet"}
+            
+          </div>
+        </div>
+
         {isCandidate ? (
-          <span className="capitalize font-bold">
-            Status: {application.status}
-          </span>
+          <span className="capitalize font-bold">Status: {application.status}</span>
         ) : (
-          <Select
-            onValueChange={handleStatusChange}
-            defaultValue={application.status}
-          >
+          <Select onValueChange={handleStatusChange} defaultValue={application.status}>
             <SelectTrigger className="w-52">
               <SelectValue placeholder="Application Status" />
             </SelectTrigger>
@@ -107,6 +94,9 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
           </Select>
         )}
       </CardFooter>
+
+      {/* Conditionally render the ViewSchedule component with candidate's first name */}
+      {viewSchedule && <ViewSchedule currentDate={new Date()} candidateName={application?.name?.split(" ")[0]} />}
     </Card>
   );
 };
