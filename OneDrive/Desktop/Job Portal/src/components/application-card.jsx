@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Boxes, BriefcaseBusiness, Download, School, ClockIcon } from "lucide-react";
+import { Boxes, BriefcaseBusiness, Download, School, ClockIcon, PenIcon } from "lucide-react";
 import {
   Card, CardContent, CardFooter, CardHeader, CardTitle,
 } from "./ui/card";
@@ -7,12 +7,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { updateApplicationStatus } from "@/api/apiApplication";
 import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
+import { CircleX } from "lucide-react";
 import ViewSchedule from "./ViewSchedule"; // Import the new ViewSchedule component
 import { useUser } from "@clerk/clerk-react";
-
+import FeedbackFormForRecruiter from "./user-recruiter/feedbackbyrecruiterwritingpage";
 const ApplicationCard = ({ application, isCandidate = false }) => {
   const {user} = useUser();
   const [viewSchedule, setViewSchedule] = useState(false); // State to track schedule viewing
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false); // State to track feedback modal visibility
+
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = application?.resume;
@@ -36,6 +39,16 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
     setViewSchedule(!viewSchedule);
   };
 
+  // Toggle feedback modal
+  const handleReviewClick = () => {
+    setIsFeedbackModalOpen(true);
+  };
+
+  // Close the feedback modal
+  const handleCloseFeedbackModal = () => {
+    setIsFeedbackModalOpen(false);
+  };
+
   return (
     <Card>
       {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
@@ -44,6 +57,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
           {isCandidate
             ? `${application?.job?.title} at ${application?.job?.company?.name}`
             : application?.name}
+
           <Download
             size={18}
             className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer"
@@ -52,6 +66,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 flex-1">
+
         <div className="flex flex-col md:flex-row justify-between">
           <div className="flex gap-2 items-center">
             <BriefcaseBusiness size={15} /> {application?.experience} years of experience
@@ -70,14 +85,25 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
         <span>{new Date(application?.created_at).toLocaleString()}</span>
 
         {user?.unsafeMetadata?.role === "recruiter" && (
-        <div className="flex flex-row items-center">
-          <button onClick={handleScheduleClick}>
-            <ClockIcon size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" />
-          </button>
-          <div className="text-center text-md font-bold ml-4 mt-1 cursor-pointer">
-            {viewSchedule ? 'Hide Schedule' : "Schedule a Meet"}
+          <div className="flex flex-row items-center">
+            <button onClick={handleScheduleClick}>
+              <ClockIcon size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" />
+            </button>
+            <div className="text-center text-md font-bold ml-4 mt-1 cursor-pointer">
+              {viewSchedule ? 'Hide Schedule' : "Schedule a Meet"}
+            </div>
           </div>
-        </div>
+        )}
+
+        {user?.unsafeMetadata?.role === "recruiter" && (
+          <div className="flex flex-row items-center">
+            <button onClick={handleReviewClick}>
+              <PenIcon size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" />
+            </button>
+            <div className="text-center text-md font-bold ml-4 mt-1 cursor-pointer">
+              {viewSchedule ? 'Write Review' : "Write Review"}
+            </div>
+          </div>
         )}
 
         {isCandidate ? (
@@ -99,6 +125,23 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
 
       {/* Conditionally render the ViewSchedule component with candidate's first name */}
       {viewSchedule && <ViewSchedule currentDate={new Date()} candidateName={application?.name?.split(" ")[0]} />}
+
+      {/* Conditionally render the FeedbackFormForRecruiter component as a modal */}
+      {isFeedbackModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className=" rounded-lg shadow-lg max-w-lg w-[auto]">
+            {/* Close button for the modal */}
+    
+            <button onClick={handleCloseFeedbackModal} className="text-white hover:text-black mb-0 mt-6">
+            <CircleX color="red" className="mt-14"/>
+            
+            </button>
+         
+            {/* Feedback form inside the modal */}
+            <FeedbackFormForRecruiter />
+          </div>
+        </div>
+      )}
     </Card>
   );
 };

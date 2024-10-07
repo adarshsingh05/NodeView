@@ -5,6 +5,8 @@ import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 
 const FeedbackFormForRecruiter = () => {
+     // Close the feedback modal
+
     
     const [name, setName] = useState('');
     const [feedback, setFeedback] = useState('');
@@ -24,6 +26,9 @@ const FeedbackFormForRecruiter = () => {
         const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhZ3JqeXpqcWxzb3psd2NmYWlqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjcyNjc0MSwiZXhwIjoyMDQyMzAyNzQxfQ.PQhre7cPVE8LSQSMANHD3EsmojWT0pvAzbjAwwx5An0'; // Ensure this is correct
     
         const response = await addRecruiterFeedback(token, feedbackData);
+        
+ 
+
         
         if (response) {
             setSuccess("Feedback submitted successfully!");
@@ -63,6 +68,7 @@ const FeedbackFormForRecruiter = () => {
         <Button type="submit" className="w-full bg-blue-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 transition-colors duration-300">
             Submit Feedback
         </Button>
+     
         {error && <p className="text-red-500 mt-2">{error}</p>}
         {success && <p className="text-green-500 mt-2 text-center">{success}</p>}
         
