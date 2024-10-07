@@ -20,7 +20,7 @@ import { Card,CardHeader, CardContent, CardTitle, CardDescription } from "@/comp
 const LandingPage = () => {
   const{user}=useUser();
   return (
-    <main className='flex flex-col gap-10 sm:gap-20 '>
+    <main className='flex flex-col gap-8 sm:gap-20 '>
       <section className='text-center'>
         <h1 className='flex flex-col items-center justify-center gradient-title text-3xl font-extrabold sm:text-5xl lg:text-7xl 
         tracking-tighter py-4'>
@@ -45,11 +45,15 @@ const LandingPage = () => {
         <Button variant='blue' size="xl">Find Jobs</Button>
         </Link>
 
-        <Link to='/post-jobs'>
-        <Button variant="red" size="xl"
-        disabled={user?.unsafeMetadata?.role === "candidate"}>
-          Post Jobs</Button>
+        <Link to={user?.unsafeMetadata?.role === "candidate" ? '#' : '/post-jobs'}>
+          <Button 
+            variant="red" 
+            size="xl" 
+            disabled={user?.unsafeMetadata?.role === "candidate"}>
+            Post Jobs
+          </Button>
         </Link>
+
  
       </div>
       {/* to add things into curousel we need to prepare the json data find it in src-data-companies.json */}
@@ -78,7 +82,7 @@ const LandingPage = () => {
       </CarouselContent>
     </Carousel>
     <section>
-        <div className="text-center text-2xl sm:text-3xl font-bold mt-4 mb-2 "> Explore V-jobs' Exclusive Features</div>
+        <div className="text-center text-2xl sm:text-3xl font-bold mt-4  "> Explore V-jobs' Exclusive Features</div>
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* cards */}
@@ -247,7 +251,7 @@ const LandingPage = () => {
 
 {/* accordion */}
 <div className='w-[100%]' >
-  <div className="text-center text-3xl font-extrabold mb-2">What Our Users have to say about us </div>
+  <div className="text-center text-3xl font-extrabold">What Our Users have to say about us </div>
   <div className="h-1 w-[100%] " variant="blue"></div>
 <CarouselSize />
 </div>

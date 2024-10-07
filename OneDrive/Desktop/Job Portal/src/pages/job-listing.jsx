@@ -16,17 +16,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
-
-
 import { getCompanies } from "@/api/apiCompanies";
 import { getJobs } from "@/api/apiJobs";
 
@@ -166,34 +155,10 @@ const JobListing = () => {
               );
             })
           ) : (
-            <div className="text-center flex flex-row justify-evenly">
-            <div >No Jobs Found 😢</div>
-            </div>
+            <div>No Jobs Found 😢</div>
           )}
         </div>
       )}
-
-      {/* adding pages */}
-
-
-      <Pagination className="mt-5">
-  <PaginationContent>
-    <PaginationItem>
-      
-      <PaginationPrevious href="#" />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="/jobs">1</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationEllipsis />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationNext href="#" />
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>
-
     </div>
   );
 };

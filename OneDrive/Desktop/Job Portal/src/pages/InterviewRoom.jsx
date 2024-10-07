@@ -111,7 +111,7 @@ return (
     <div className='  gradient-title text-2xl font-extrabold sm:text-4xl lg:text-5xl text-center mb-12'>
       Welcome to the Interview Room, <span className='bg-gradient-to-r from-[#c96844] to-[#3b777f] bg-clip-text'>{user?.firstName}!!</span>
       <div  className='gradient-title text-xl  sm:text-2xl lg:text-3xl text-center mb-2 mt-4'>
-      Hope you are doing good with {isRecruiter ? 'Recruitment Process' : 'Interviews'} !
+      Hope you are doing good with {isRecruiter ? ' With your Recruitment Process' : 'With your Interviews'} !
       </div>
 
     </div>
@@ -217,7 +217,7 @@ Excess the features of live one - on - one video call completely for free powere
 
     <section>
       {/* Line */}
-      <div className="hidden lg:block w-[100%] bg-blue-500 h-[2px] mt-5"></div>
+      <div className="hidden lg:block w-[100%] bg-blue-500 h-[2px] mt-14 mb-14"></div>
 
       {/* Overall div */}
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-4  '>
@@ -256,11 +256,11 @@ Excess the features of live one - on - one video call completely for free powere
                         checked={task.isCompleted}
                         onChange={() => toggleTaskCompletion(task.id)}
                       />
-                      <div className={`flex-grow ${task.isCompleted ? 'line-through' : ''}`}>
+                      <div className={`flex-grow ${task.isCompleted ? 'line-through bg-red-300 border rounded-md' : ''}`}>
                         <h4 className="text-lg font-semibold">Event Name: {task.eventName}</h4>
                         <p className="text-sm text-gray-600">Description: {task.description}</p>
                       </div>
-                      <p className="ml-4 font-semibold text-gray-600">Date: {task.date}</p>
+                      <p className= {`ml-4 font-semibold text-gray-600 ${task.isCompleted ? 'line-through bg-red-300 border rounded-md' : ''}`}> Date: {task.date} </p>
                     </div>
                   </div>
                 ))}

@@ -11,6 +11,7 @@ import ViewSchedule from "./ViewSchedule"; // Import the new ViewSchedule compon
 import { useUser } from "@clerk/clerk-react";
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
+  const {user} = useUser();
   const [viewSchedule, setViewSchedule] = useState(false); // State to track schedule viewing
   const handleDownload = () => {
     const link = document.createElement("a");
@@ -68,15 +69,16 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
       <CardFooter className="flex justify-between">
         <span>{new Date(application?.created_at).toLocaleString()}</span>
 
+        {user?.unsafeMetadata?.role === "recruiter" && (
         <div className="flex flex-row items-center">
           <button onClick={handleScheduleClick}>
             <ClockIcon size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" />
           </button>
           <div className="text-center text-md font-bold ml-4 mt-1 cursor-pointer">
             {viewSchedule ? 'Hide Schedule' : "Schedule a Meet"}
-            
           </div>
         </div>
+        )}
 
         {isCandidate ? (
           <span className="capitalize font-bold">Status: {application.status}</span>

@@ -34,7 +34,9 @@ const CreatedApplications = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-lg font-semibold">You have applied for {applicationCount} applications</h2>
+      <h2 className="text-lg font-semibold text-center">
+        Job Summary: You have applied for {applicationCount} {applicationCount === 1 ? 'job' : 'jobs'}
+      </h2>
       {applications?.map((application) => {
         return (
           <ApplicationCard

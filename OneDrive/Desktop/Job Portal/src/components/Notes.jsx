@@ -16,19 +16,18 @@ const Notes = () => {
     setNotes(storedNotes);
   }, []);
 
-  // Save notes to local storage whenever they change
+  // Save notes to local storage whenever they change, but avoid saving an empty array on the first load
   useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(notes));
-    console.log("Notes saved to local storage:", notes); // Debug log
+    if (notes.length > 0) {
+      localStorage.setItem('notes', JSON.stringify(notes));
+      console.log("Notes saved to local storage:", notes); // Debug log
+    }
   }, [notes]);
 
   // Add a new note
   const handleAddNote = () => {
     if (title.trim() && newNote.trim()) {
-      // Create the new notes array without modifying the existing one directly
       const updatedNotes = [...notes, { title, content: newNote }];
-
-      // Update the notes state
       setNotes(updatedNotes);
 
       // Clear input fields
@@ -58,7 +57,7 @@ const Notes = () => {
         value={newNote}
         onChange={(e) => setNewNote(e.target.value)}
         placeholder="Write your note here..."
-        className='mb-4'
+        className={`mb-4 ${notes.length === 0 ? 'h-[260px]' : 'h-[120px]'}`}
       />
       <div className='text-center'>
         <Button variant='blue' onClick={handleAddNote} className='mb-4'>

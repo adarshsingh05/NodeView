@@ -8,7 +8,7 @@ const generateSlotsForDate = (date) => {
   const slots = [];
   for (let i = 0; i < 24; i++) { // 24 hours in a day
     const startTime = new Date(date);
-    startTime.setHours(i);
+    startTime.setHours(i,0,0);
     const endTime = new Date(startTime);
     endTime.setHours(i + 1);
     slots.push({
@@ -29,7 +29,7 @@ const SlotCard = ({ timeRange, date, deleted, onDelete, onUndo }) => (
     <Button 
       variant="outline" 
       onClick={deleted ? onUndo : onDelete} 
-      className={`${deleted ? 'bg-green-500 text-white' : ''}`}>
+      className={`${deleted ? 'bg-blue-500 text-white' : ''}`}>
       {deleted ? 'Undo' : 'Delete'}
     </Button>
   </div>

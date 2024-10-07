@@ -20,6 +20,8 @@ import Whiteboard from './pages/Whiteboard';
 import HomePage from './components/home';
 import RoomPage from './components/room';
 import { ApplicationProvider } from './context/applicationContext';
+import FeedbackForm from './components/feedback';
+import ViewFeedback from './components/viewFeedback';
 // Defining the router dom and creating the route for the multi pages app.
 const router = createBrowserRouter([
   {
@@ -131,6 +133,22 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoutes> 
             <SchedulePage /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/write-feedback',  
+        element: (
+          <ProtectedRoutes> 
+            <FeedbackForm /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/view-feedback',  
+        element: (
+          <ProtectedRoutes> 
+            <ViewFeedback /> 
           </ProtectedRoutes>
         )
       },
