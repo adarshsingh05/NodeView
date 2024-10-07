@@ -22,6 +22,7 @@ import RoomPage from './components/room';
 import { ApplicationProvider } from './context/applicationContext';
 import FeedbackForm from './components/feedback';
 import ViewFeedback from './components/viewFeedback';
+import FeedbackFormForRecruiter from './components/user-recruiter/feedbackbyrecruiterwritingpage';
 // Defining the router dom and creating the route for the multi pages app.
 const router = createBrowserRouter([
   {
@@ -149,6 +150,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoutes> 
             <ViewFeedback /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/recruiters-review',  
+        element: (
+          <ProtectedRoutes> 
+            <FeedbackFormForRecruiter /> 
           </ProtectedRoutes>
         )
       },
