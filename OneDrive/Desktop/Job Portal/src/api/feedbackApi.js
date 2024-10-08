@@ -1,5 +1,6 @@
 import supabaseClient from "@/utils/supabase";
 
+
 // Add feedback
 export async function addFeedback(token, feedbackData) {
     const supabase = await supabaseClient(token); // Use the initialized Supabase client
@@ -55,5 +56,24 @@ export async function addRecruiterFeedback(token, feedbackData) {
     }
 
     return { success: true, data }; // Return success and data 
+}
+
+// Fetch all recruiter review feedback
+export async function fetchFeedbackrec(token,user_id) {
+    const supabase = await supabaseClient(token);
+
+    // Fetch feedback from the feedback table
+    const { data, error } = await supabase
+        .from("recruiterreviews") // Make sure this matches your table name in Supabase
+        .select("*")
+        .eq('user_id', user_id); 
+
+
+    if (error) {
+        console.error("Error fetching feedback:", error);
+        return null;
+    }
+
+    return data;
 }
 

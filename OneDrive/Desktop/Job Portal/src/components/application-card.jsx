@@ -48,15 +48,26 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
   const handleCloseFeedbackModal = () => {
     setIsFeedbackModalOpen(false);
   };
+  
 
   return (
     <Card>
       {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
       <CardHeader>
+      
         <CardTitle className="flex justify-between font-bold">
-          {isCandidate
+        
+        {isCandidate
             ? `${application?.job?.title} at ${application?.job?.company?.name}`
-            : application?.name}
+            : (
+              <div className="flex flex-col">
+                <span>{application?.name}</span>
+                {/* Display candidate user_id (from Clerk or application object) next to the name */}
+                <span className="text-gray-500 text-sm">User ID: {application?.candidate_id}</span>
+              </div>
+              
+            )}
+            
 
           <Download
             size={18}

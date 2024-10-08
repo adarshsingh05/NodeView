@@ -10,6 +10,8 @@ const FeedbackFormForRecruiter = () => {
     
     const [name, setName] = useState('');
     const [feedback, setFeedback] = useState('');
+    const [user_id, setuser_id] = useState('');
+
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
@@ -19,6 +21,7 @@ const FeedbackFormForRecruiter = () => {
         const feedbackData = {
             name,
             feedback,
+            user_id,
            
             
         };
@@ -33,6 +36,7 @@ const FeedbackFormForRecruiter = () => {
         if (response) {
             setSuccess("Feedback submitted successfully!");
             setName('');
+            setuser_id('');
             setFeedback('');
             setError(null); // Clear any previous error message
             console.log("Submitting feedback with data:", feedbackData);
@@ -51,6 +55,16 @@ const FeedbackFormForRecruiter = () => {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
+                className="border p-2 w-full rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+            />
+        </div>
+        <div className="mb-4">
+            <label className="block mb-1 font-medium">Candidate_id</label>
+            <Input
+                type="text"
+                value={user_id}
+                onChange={(e) => setuser_id(e.target.value)}
                 required
                 className="border p-2 w-full rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
             />

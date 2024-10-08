@@ -12,6 +12,7 @@ import LinkedInShareButton from "@/components/LinkedInShareButton";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline"; // Updated import
 import { Line } from "react-chartjs-2";
 import { useApplicationContext } from "@/context/applicationContext";
+import UserFeedbackPage from "@/api/viewuserfeedback";
 
 
 // function for generating chart
@@ -72,17 +73,6 @@ const DashboardPage = () => {
     applicationStats.offers,
   ];
 
-  // Dummy recruiter reviews data
-  const reviews = [
-    { reviewer: 'John Doe', comment: 'Very strong candidate with great skills!' },
-    { reviewer: 'Jane Smith', comment: 'Impressive work ethic and communication skills.' },
-    { reviewer: 'Recruiter X', comment: 'Would recommend for future projects.' },
-    { reviewer: 'Recruiter Y', comment: 'Excellent coding ability, needs to work on time management.' },
-  ];
-
-  // <h1>hii:  {props.acount}</h1>
-  // console.log(props.acount);
-
 // Function to generate and download PDF
 const handleDownloadReport = () => {
   const doc = new jsPDF();
@@ -109,11 +99,7 @@ const handleDownloadReport = () => {
     doc.text('- ' + skill.name + ': ' + skill.rating + '/5', 10, 90 + index * 10);
   });
 
-  // Add recruiter reviews
-  doc.text('Recruiter Reviews:', 10, 120);
-  reviews.forEach((review, index) => {
-    doc.text('- ' + review.reviewer + ': ' + review.comment, 10, 130 + index * 10);
-  });
+
 
   // Save the PDF
   doc.save('Job_Application_Report.pdf');
@@ -238,43 +224,11 @@ const handleDownloadReport = () => {
 
         {/* Recruiter Reviews Section */}
         <section className="w-full md:w-[50%] sticky top-20">
-          <Card className="bg-gray-800 text-white h-[300px] overflow-y-scroll border-white rounded-md">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl sticky">Recruiter Reviews</CardTitle>
-              <CardDescription className="text-gray-400">What recruiters say about you</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {reviews.map((review, index) => (
-                <div key={index} className="p-2 border-b border-gray-600">
-                  <p className="text-lg font-semibold">{review.reviewer}</p>
-                  <p className="text-gray-300">{review.comment}</p>
-                </div>
-              ))}
-            </CardContent>
-            <div className="flex justify-between items-center p-4">
-              <LinkedInShareButton 
-                url="http://localhost:5173/dashboard"  // The URL to the dashboard page you want to share
-              />
-              <Button className="flex items-center" variant="red" onClick={handleDownloadReport}>
-                <ArrowDownTrayIcon className="w-4 h-4 mr-1" />
-                Download Report
-              </Button>
-            </div>
-          </Card>
+                <UserFeedbackPage/>
         </section>
       </section>
 
-      {/* Section for showing the Interview Chart
-      <section className="flex-grow h-[320px] w-[50%]">
-        <Card className="bg-#020817 text-white h-[100%]">
-          <CardHeader>
-            <CardTitle className="p-2 border-b border-gray-600">Interviews Held Per Month</CardTitle>
-          </CardHeader>
-          <CardContent className="h-[95%]">
-            <InterviewChart className="h-[100%]"/>
-          </CardContent>
-        </Card>
-      </section> */}
+    
 
       {/* Section for showing the Interview and Referrals Charts */}
       <section className="flex gap-6 h-[320px] w-full mt-5">
