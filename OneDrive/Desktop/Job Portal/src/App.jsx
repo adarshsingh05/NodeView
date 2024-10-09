@@ -24,6 +24,7 @@ import FeedbackForm from './components/feedback';
 import ViewFeedback from './components/viewFeedback';
 import FeedbackFormForRecruiter from './components/user-recruiter/feedbackbyrecruiterwritingpage';
 import UserFeedbackPage from './api/viewuserfeedback';
+import EventsList from './temp components/EventList';
 // Defining the router dom and creating the route for the multi pages app.
 const router = createBrowserRouter([
   {
@@ -162,6 +163,15 @@ const router = createBrowserRouter([
           </ProtectedRoutes>
         )
       },
+      {
+        path: '/event-list',  
+        element: (
+          <ProtectedRoutes> 
+            <EventsList /> 
+          </ProtectedRoutes>
+        )
+      },
+    
     
       {
         path: '/userpage',

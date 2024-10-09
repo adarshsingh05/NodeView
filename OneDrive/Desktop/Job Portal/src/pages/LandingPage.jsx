@@ -87,7 +87,7 @@ const LandingPage = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* cards */}
         {/* card 01 */}
-        <Card>
+        <Card className='cursor-not-allowed'>
           <CardHeader>
           <div className="flex items-center space-x-2 ">
         
@@ -107,7 +107,7 @@ const LandingPage = () => {
             d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
           />
         </svg>
-        <CardTitle className="mr-3">Map View</CardTitle>
+        <CardTitle className="mr-3 cursor-wait">Map View (Feature Comming Soon) </CardTitle>
       </div>
       <CardDescription>Our own code editor with multi Language-Support</CardDescription>
     </CardHeader>
@@ -121,7 +121,7 @@ const LandingPage = () => {
         {/* card 02*/}
         <Card>
           <CardHeader>
-            <CardTitle>Resume Test</CardTitle>
+            <CardTitle>Resume Test - Live Now</CardTitle>
             <CardDescription>Verify Your Resume with our AI based analysis</CardDescription>
           </CardHeader>
             <CardContent>
@@ -134,25 +134,25 @@ const LandingPage = () => {
         {/* cards */}
         {/* card 01 */}
       <Link to="/interviewroom"> {/* Wrap the Card component with Link */}
-      <Card>
+      <Card >
         <CardHeader>
-          <CardTitle>Interview Room</CardTitle>
+          <CardTitle>Interview Room  - Live Now</CardTitle>
           <CardDescription>Get Our all new personalised Interview Room</CardDescription>
         </CardHeader>
         <CardContent>
-          <p>Get features like inbuilt code editor, video call feature, and a lot more</p>
+          <p>Get features like inbuilt code editor, video call feature, Interactive live whiteboard. Getfeature to add and save your notes and manage your upcomming interviews.</p>
         </CardContent>
       </Card>
     </Link>
 
         {/* card 02*/}
-        <Card>
+        <Card className='cursor-not-allowed'>
           <CardHeader>
-            <CardTitle>Feature four</CardTitle>
-            <CardDescription>Feature 4</CardDescription>
+            <CardTitle>Referrals (Feature Coming Soon)</CardTitle>
+            <CardDescription>Share Referrals with your known ones</CardDescription>
           </CardHeader>
             <CardContent>
-              <p>Feature 4</p>
+              <p>Vjob's Referrals feature allows you to take Referrals from your known ones and also you can give Referralsto the potential candidates</p>
             </CardContent> 
         </Card>
       </section>
@@ -251,7 +251,7 @@ const LandingPage = () => {
 
 {/* accordion */}
 <div className='w-[100%]' >
-  <div className="text-center text-3xl font-extrabold">What Our Users have to say about us </div>
+  <div className="text-center text-3xl font-extrabold">Our Testimonials </div>
   <div className="h-1 w-[100%] " variant="blue"></div>
 <CarouselSize />
 </div>

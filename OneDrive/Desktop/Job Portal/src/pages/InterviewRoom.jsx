@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Calendar from 'react-calendar';
+
 import 'react-calendar/dist/Calendar.css';
 import { useUser } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
@@ -7,14 +7,22 @@ import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 import Notes from '@/components/Notes';
 import { useEffect } from 'react';
+import EventsList from '@/temp components/EventList';
 
 
 
 const InterviewRoom = () => {
+  
+
+  
+
   const navigate = useNavigate();
   const { user } = useUser();
+ 
   const [date, setDate] = useState(new Date());
   const [isLoading, setIsLoading] = useState(true); // Declare the loading state
+
+
 
   // interview meet
   const[value, setValue] = useState();
@@ -23,61 +31,10 @@ const InterviewRoom = () => {
 navigate(`/room/${value}`)
   },[navigater,value])
 
-  // Define the tasks array
-  const initialTasks = [
-      {
-          id: 1,
-          eventName: "Coding Interview",
-          description: "Technical round focusing on DSA.",
-          date: "2024-10-05",
-          isCompleted: false,
-      },
-      {
-          id: 2,
-          eventName: "System Design Interview",
-          description: "Discussion on high-level system design.",
-          date: "2024-10-10",
-          isCompleted: false,
-      },
-      {
-          id: 3,
-          eventName: "Behavioral Interview",
-          description: "Interview with HR focusing on soft skills.",
-          date: "2024-10-15",
-          isCompleted: false,
-      },
-      {
-        id: 4,
-        eventName: "Behavioral Interview",
-        description: "Interview with HR focusing on soft skills.",
-        date: "2024-10-15",
-        isCompleted: false,
-    },
-    {
-      id: 5,
-      eventName: "aditya Interview",
-      description: "Interview with HR focusing on soft skills.",
-      date: "2024-10-15",
-      isCompleted: false,
-  },
-  {
-    id: 6,
-    eventName: "Behavioral Interview",
-    description: "Interview with HR focusing on soft skills.",
-    date: "2024-10-15",
-    isCompleted: false,
-},
-  ];
 
-  const [tasks, setTasks] = useState(initialTasks);
+  
   const isRecruiter = user?.unsafeMetadata?.role === 'recruiter';
 
-  // Toggle task completion status
-  const toggleTaskCompletion = (taskId) => {
-      setTasks(tasks.map(task => (
-          task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
-      )));
-  };
 
   // for rendering the video
   useEffect(() => {
@@ -240,37 +197,15 @@ Excess the features of live one - on - one video call completely for free powere
         <div className='rounded-md   lg:w-[85%] w-full  border-[#c16947] mb-2 lg:mb-0 ml-6 mt-4'>
               <Notes/>
             </div>
+            {/* <div> show: {user.id}</div> */}
 
-        {/* Your Upcoming Events Section */}
-        <div className='flex flex-col '>
-          <div className='text-xl font-bold mt-4 text-center p-1 rounded-md border-[3px] border-[#41767c]'> Your Upcoming Events</div>
           <div>
-            <div className='w-full lg:w-[90%] h-[380px] p-4 overflow-y-auto mt-5'>
-            
-                {tasks.map((task) => (
-                  <div className='mb-4' key={task.id}>
-                    <div className='flex items-center'>
-                      <input
-                        type="checkbox"
-                        className="mr-4"
-                        checked={task.isCompleted}
-                        onChange={() => toggleTaskCompletion(task.id)}
-                      />
-                      <div className={`flex-grow ${task.isCompleted ? 'line-through bg-red-300 border rounded-md' : ''}`}>
-                        <h4 className="text-lg font-semibold">Event Name: {task.eventName}</h4>
-                        <p className="text-sm text-gray-600">Description: {task.description}</p>
-                      </div>
-                      <p className= {`ml-4 font-semibold text-gray-600 ${task.isCompleted ? 'line-through bg-red-300 border rounded-md' : ''}`}> Date: {task.date} </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
+            <EventsList/>
           </div>
 
+          </div>
 
-      </div>
+      
     </section>
   </div>
   

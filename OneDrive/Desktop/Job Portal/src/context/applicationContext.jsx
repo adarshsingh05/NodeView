@@ -29,9 +29,9 @@ export const ApplicationProvider = ({ children }) => {
   useEffect(() => {
     if (applications) {
       // Total applications count
-      const applied = applications.filter(
-        (application)=> application.status === 'applied' || 'interviewing' || 'hired' || 'rejected'
-      )
+      const applied = applications.filter((application) =>
+        ['applied', 'interviewing', 'hired', 'rejected'].includes(application.status)
+      );
       setApplicationCount(applied.length);
 
       // Calculate interviewing count
