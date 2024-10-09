@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Carousel } from "@/components/ui/carousel";
+import ReactTypingEffect from "react-typing-effect";
 import { Link } from "react-router-dom";
 import { CarouselContent } from "@/components/ui/carousel";
 import { CarouselItem } from "@/components/ui/carousel";
@@ -119,6 +120,7 @@ const LandingPage = () => {
   </Card>
 
         {/* card 02*/}
+        <Link to="https://resumetrackerapp.streamlit.app/"> 
         <Card>
           <CardHeader>
             <CardTitle>Resume Test - Live Now</CardTitle>
@@ -128,6 +130,7 @@ const LandingPage = () => {
               <p>Get Your resume verified Get missing Keywords and Suggestions based on the Project Description</p>
             </CardContent> 
         </Card>
+      </Link>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-0">
@@ -255,11 +258,20 @@ const LandingPage = () => {
   <div className="h-1 w-[100%] " variant="blue"></div>
 <CarouselSize />
 </div>
-<div className="text-center">
+<h2 className="text-2xl sm:text-3xl font-bold text-center">
+        <ReactTypingEffect
+          text="Frequently Asked Questions ..."
+          speed={20} // typing speed
+          eraseSpeed={5}        // Erase speed (faster)
+          eraseDelay={100}      // Delay before erasing starts
+          typingDelay={50}  // delay before erasing
+        />
+      </h2>
+{/* <div className="text-center">
     <h2 className="text-2xl sm:text-3xl font-bold ">
        Frequently Asked Questions
     </h2>
-  </div>
+  </div> */}
 <Accordion type="multiple" className="w-full">
         {faqs.map((faq, index) => (
           <AccordionItem key={index} value={`item-${index + 1}`}>

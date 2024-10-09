@@ -84,10 +84,17 @@ const JobCard = ({
       </CardContent>
       <CardFooter className="flex gap-2">
         <Link to={`/job/${job.id}`} className="flex-1">
-          <Button variant="secondary" className="w-full">
-            More Details
+          <Button variant="blue" className="w-full">
+          {user?.unsafeMetadata?.role === "candidate" ? 'Apply' : 'More details'}
           </Button>
         </Link>
+          {user?.unsafeMetadata?.role === "candidate" && (
+          <Link to ='https://resumetrackerapp.streamlit.app/'>
+        <Button variant="red" className="w-[auto]">
+           Match Your Resume
+          </Button>
+          </Link>
+          )}
         {!isMyJob && (
           <Button
             variant="outline"

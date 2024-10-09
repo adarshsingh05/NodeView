@@ -3,6 +3,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { fetchFeedback } from "@/api/feedbackApi"; // Import the fetchFeedback function
 import { Card, CardContent } from "@/components/ui/card";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -42,9 +43,9 @@ export function CarouselSize() {
   return (
     <div className="w-full flex justify-center items-center py-4">
       <Carousel
-        opts={{
-          align: "start",
-        }}
+        plugins={[
+          Autoplay({delay:1000})
+        ]}
         className="w-full max-w-5xl"
       >
         <CarouselContent className="flex">
