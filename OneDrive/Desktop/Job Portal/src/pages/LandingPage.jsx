@@ -36,8 +36,15 @@ const LandingPage = () => {
              />
           </span>
         </h1>
-        <p className="text-grey-300 sm:mt-4 text-xs sm:text-xl">
-        Explore thousands of job listings or find the perfect candidate        </p>
+        <p className="text-grey-300 sm:mt-4 text-md sm:text-xl">
+        <ReactTypingEffect
+          text=" Explore thousands of job listings or find the perfect candidate  "
+          speed={20} // typing speed
+          eraseSpeed={5}        // Erase speed (faster)
+          eraseDelay={100}      // Delay before erasing starts
+          typingDelay={50}  // delay before erasing
+        />
+             </p>
       </section>
       <div className="flex gap-6 justify-center" >
         {/* button and linking to respective place-routing */}

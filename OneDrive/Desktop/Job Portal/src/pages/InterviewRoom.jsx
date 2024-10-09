@@ -178,22 +178,7 @@ Excess the features of live one - on - one video call completely for free powere
 
       {/* Overall div */}
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-4  '>
-         {/* Calendar Div */}
-        {/* <div className='rounded-md   lg:w-[85%] w-full  border-[#c16947] mb-2 lg:mb-0 ml-6'>
-          <div className="flex justify-center items-center h-[90]">
-            <div className="">
-                  <h2 className="text-xl font-extrabold mb-4 mt-4 text-center w-full">Your Calendar</h2>
-                  <Calendar
-                    onChange={setDate}
-                    value={date}
-                    className="text-gray-900 dark:text-gray-600"
-                  />
-                  <p className="mt-4 text-center text-gray-700 dark:text-gray-300">
-                    Selected Date: {date.toDateString()}
-                  </p>
-            </div>
-          </div>
-        </div>  */}
+      
         <div className='rounded-md   lg:w-[85%] w-full  border-[#c16947] mb-2 lg:mb-0 ml-6 mt-4'>
               <Notes/>
             </div>

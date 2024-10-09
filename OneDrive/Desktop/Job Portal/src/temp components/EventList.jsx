@@ -64,11 +64,11 @@ const EventsList = ({ }) => {
                         checked={event.isCompleted}
                         onChange={() => toggleEventCompletion(event.id)}
                       />
-                      <div className={`flex-grow ${event.isCompleted ? 'line-through bg-red-300 border rounded-md' : ''}`}>
+                      <div className={`flex-grow ${event.isCompleted ? 'line-through  ' : ''}`}>
                         <h4 className="text-lg font-semibold">Event Name: {event.EventName}</h4>
                         <p className="text-sm text-gray-600">Description: {event.description}</p>
                       </div>
-                      <p className= {`ml-4 font-semibold text-gray-600 ${event.isCompleted ? 'line-through bg-red-300 border rounded-md' : ''}`}> Date: {event.date} </p>
+                      <p className= {`ml-4 font-semibold text-gray-600 ${event.isCompleted ? 'line-through ' : ''}`}> Date: {event.date} </p>
                     </div>
                   </div>
                 ))}
