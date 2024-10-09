@@ -1,42 +1,47 @@
+import { useState } from 'react';
 import Header from "@/components/header";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import UserFeedbackModal from '@/modals/userfeedbackmodel';
+import FeedbackForm from '@/components/feedback';
 const AppLayout = () => {
-  return (
-    <div>
-      <div className="grid-background"></div>
-      {/* putting all the routes in main */}
-      <main className="min-h-screen container">
-        <Header/>
-        <Outlet />  
-      </main>  
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-      {/* creating a footer */}
-   <div className="flex">
-    <div className="bg-gray-800 height-[auto] w-[100%] m-6 border rounded-md">
-      <div className="bg-[#020817] flex flex-row h-[40%] justify-around mt-3 mb-2 ml-4 mr-4 border rounded-md">
-        <div className="font-extrabold">
-          Contact us
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    return (
+        <div>
+            <div className="grid-background"></div>
+            <main className="min-h-screen container">
+                <Header/>
+                <Outlet />
+            </main>
+
+            {/* Footer */}
+            <div className="flex">
+                <div className="bg-gray-800 height-[auto] w-[100%] m-6 border rounded-md">
+                    <div className="bg-[#020817] flex flex-row h-[40%] justify-around mt-3 mb-2 ml-4 mr-4 border rounded-md">
+                        <div className="font-extrabold">Contact us</div>
+                        <div className="font-extrabold">Contribute</div>
+                        <div
+                            className="font-extrabold cursor-pointer"
+                            onClick={openModal} // Open modal on click
+                        >
+                            Give Feedback
+                        </div>
+                    </div>
+                    <div className="text-center mb-4">
+                        The site is currently in Development Mode, contribute to make it even better ❤️
+                    </div>
+                </div>
+            </div>
+
+            {/* Modal for Feedback Form */}
+            <UserFeedbackModal isOpen={isModalOpen} onClose={closeModal}>
+                <FeedbackForm />
+            </UserFeedbackModal>
         </div>
-        <div className="font-extrabold">
-          Contribute
-        </div>
-        <Link to="/write-feedback">
-          <div className="font-extrabold cursor-pointer">
-            Give Feedback
-          </div>
-        </Link>
-
-      </div>
-      <div className="text-center mb-4"> The site is currently in Development Mode, contribute to make it even better ❤️</div>
-    </div>
-   </div>
-
-      {/* <div className="bg-gray-800 mt-10 flex flex-row justify-between"> 
-      
-      
-      </div> */}
-      </div> 
-  );
+    );
 };
 
 export default AppLayout;
