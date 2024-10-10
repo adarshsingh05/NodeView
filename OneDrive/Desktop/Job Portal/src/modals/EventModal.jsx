@@ -3,11 +3,13 @@ import { useUser } from '@clerk/clerk-react';
 import React, { useState, useEffect } from 'react';
 
 const EventModal = ({ isVisible, onClose}) => {
+  const {user} =  useUser();
+  const id= user.id;
     
   const [EventName, setEventName] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
-  const [user_id, setuser_id] = useState('');
+  const [user_id, setuser_id] = useState(id);
 
 //   db interaction
     const [error, setError] = useState(null);
@@ -29,9 +31,9 @@ const EventModal = ({ isVisible, onClose}) => {
      
 
         if (response) {
-            setSuccess("Feedback submitted successfully!");
+            setSuccess("Event added successfully!");
             setEventName('');
-            setuser_id('');
+            setuser_id(id);
             setDate('');
             setDescription('');
             setError(null); // Clear any previous error message
@@ -78,6 +80,7 @@ const EventModal = ({ isVisible, onClose}) => {
             value={user_id}
             required
             onChange={(e) => setuser_id(e.target.value)}
+            readOnly
           />
         </label>
         

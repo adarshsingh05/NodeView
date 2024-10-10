@@ -73,7 +73,7 @@ return ( <>
     <div className='  gradient-title text-2xl font-extrabold sm:text-4xl lg:text-5xl text-center mb-12'>
       Welcome to the Interview Room, <span className='bg-gradient-to-r from-[#c96844] to-[#3b777f] bg-clip-text'>{user?.firstName}!!</span>
       <div  className='gradient-title text-xl  sm:text-2xl lg:text-3xl text-center mb-2 mt-4'>
-      Hope you are doing good with {isRecruiter ? ' With your Recruitment Process' : 'With your Interviews'} !
+      Hope you are doing good {isRecruiter ? ' With your Recruitment Process' : 'With your Interviews'} !
       </div>
 
     </div>

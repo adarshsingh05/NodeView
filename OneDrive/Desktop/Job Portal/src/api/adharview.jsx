@@ -4,6 +4,7 @@ import { useUser } from "@clerk/clerk-react";
 import { fetchAadharCards } from "./apiadhar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RefreshCcw } from "lucide-react";
 const AadharCardViewer = () => {
     const { user } = useUser();
 
@@ -64,9 +65,9 @@ const AadharCardViewer = () => {
           <h2 className="text-2xl font-semibold text-center text-white">View Your Documents</h2>
           <Button
             onClick={loadAadharCards} // Call the load function to refresh
-            className="bg-gray-600 text-white font-semibold rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300"
+            className="  font-semibold rounded-3xl hover:bg-gray-700 focus:outline-none focus:ring "
           >
-           <img src='public/refresh.png' className="h-6 w-6"></img>
+           <RefreshCcw /> 
           </Button>
         </div>
 
