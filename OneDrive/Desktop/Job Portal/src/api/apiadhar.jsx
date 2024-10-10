@@ -11,7 +11,7 @@ export async function uploadAadharCard(token, aadharData) {
   // Upload Aadhar Card to Supabase storage
   const { error: storageError } = await supabase.storage
     .from("aadhar_cards")
-    .upload(fileName, aadharData.aadharFile);
+    .upload(fileName, aadharData.aadharFile,aadharData.filename);
 
   if (storageError) throw new Error("Error uploading Aadhar Card");
 
@@ -25,6 +25,7 @@ export async function uploadAadharCard(token, aadharData) {
       {
         candidate_id: aadharData.candidate_id,
         aadhar_url: aadharUrl,
+        name: aadharData.filename
         // Add any other necessary fields from aadharData
       },
     ])
@@ -43,7 +44,7 @@ export const fetchAadharCards = async (userId, token) => {
   
   const { data, error } = await supabase
     .from("aadhar_applications")
-    .select("id, aadhar_url")
+    .select("id, aadhar_url,name,created_at")
     .eq("candidate_id", userId);
   
   if (error) {

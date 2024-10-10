@@ -15,6 +15,8 @@ import ReactTypingEffect from 'react-typing-effect';
 
 
 const InterviewRoom = () => {
+  const [success, setSuccess] = useState(false);
+
   
 
   
@@ -218,12 +220,16 @@ Excess the features of live one - on - one video call completely for free powere
    <div className='w-[50%]'>
      <AadharUpload />
      </div>
-   
+
+  
  <div className='w-[50%]'>
    {/* AadharCardViewer Component */}
      <AadharCardViewer />
+   
 
      </div>
+     
+
  </div>
 
 

@@ -101,6 +101,14 @@ const router = createBrowserRouter([
           </ProtectedRoutes>
         ) 
       },
+      {
+        path: '/upload', 
+        element: (
+          <ProtectedRoutes>  
+            <AadharUpload />
+          </ProtectedRoutes>
+        ) 
+      },
      
       {
         path: '/my-jobs',  
