@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { fetchAadharCards } from "./apiadhar";
-
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 const AadharCardViewer = () => {
     const { user } = useUser();
 
@@ -50,20 +51,33 @@ const AadharCardViewer = () => {
   if (error) return <p>Error fetching Aadhar cards: {error}</p>;
 
   return (
-    <div>
-      <h2>Your Aadhar Cards</h2>
-      {aadharCards.length === 0 ? (
-        <p>No Aadhar cards found.</p>
-      ) : (
-        <ul>
-          {aadharCards.map((card) => (
-            <li key={card.id}>
-              <span>Aadhar Card URL: {card.aadhar_url}</span>
-              <button onClick={() => handleDownload(card.aadhar_url)}>Download</button>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="flex justify-center mt-8">
+      <div className="w-full max-w-lg h-[400px] overflow-y-auto bg-gray-800 p-4 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold text-center mb-4 text-white">View Your Documents</h2>
+
+        {aadharCards.length === 0 ? (
+          <p className="text-gray-400 text-center">No Documents found.</p>
+        ) : (
+          <div className="space-y-2">
+            {aadharCards.map((card) => (
+              <Card key={card.id} className="shadow-md rounded-lg p-4  h-[120px] flex flex-row justify-between">
+                <CardHeader>
+                  <CardTitle className="text-lg font-bold text-white">Document</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center flex flex-row justify-between">
+                  <p className="text-sm text-gray-300 mr-12 mt-8 ">Document</p>
+                  <Button 
+                    onClick={() => handleDownload(card.aadhar_url)} 
+                    className="bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 mt-6"
+                  >
+                    Download
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

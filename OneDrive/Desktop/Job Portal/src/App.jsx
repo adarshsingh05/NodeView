@@ -101,22 +101,7 @@ const router = createBrowserRouter([
           </ProtectedRoutes>
         ) 
       },
-      {
-        path: '/upload', 
-        element: (
-          <ProtectedRoutes>  
-            <AadharUpload />
-          </ProtectedRoutes>
-        ) 
-      },
-      {
-        path: '/view', 
-        element: (
-          <ProtectedRoutes>  
-            <AadharCardViewer />
-          </ProtectedRoutes>
-        ) 
-      },
+     
       {
         path: '/my-jobs',  
         element: (

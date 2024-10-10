@@ -8,6 +8,9 @@ import { useCallback } from 'react';
 import Notes from '@/components/Notes';
 import { useEffect } from 'react';
 import EventsList from '@/temp components/EventList';
+import AadharUpload from '@/api/adharupload';
+import AadharCardViewer from '@/api/adharview';
+import ReactTypingEffect from 'react-typing-effect';
 
 
 
@@ -62,7 +65,7 @@ navigate(`/room/${value}`)
     );
   }
 
-return (
+return ( <>
   <div>
     {/* gmeet, code editor and calendar */}
     <div className='  gradient-title text-2xl font-extrabold sm:text-4xl lg:text-5xl text-center mb-12'>
@@ -192,7 +195,40 @@ Excess the features of live one - on - one video call completely for free powere
 
       
     </section>
+
+    {/* new section to view and upload documents */}
+   
   </div>
+
+  {/* section to display keep all your needed doc at one place */}
+  <section>
+  <p className="text-grey-300 sm:mt-4 text-2xl  sm:text-3xl lg:text-4xl text-center font-bold">
+        <ReactTypingEffect
+          text=" Keep all Your needed Documents at one safe place..  "
+          speed={60} // typing speed
+          eraseSpeed={50}        // Erase speed (faster)
+          eraseDelay={1000}      // Delay before erasing starts
+          typingDelay={40}  // delay before erasing
+        />
+             </p>
+  </section>
+
+  <div className='flex flex-row w-[full] mt-6'>
+   {/* AadharUpload Component */}
+   <div className='w-[50%]'>
+     <AadharUpload />
+     </div>
+   
+ <div className='w-[50%]'>
+   {/* AadharCardViewer Component */}
+     <AadharCardViewer />
+
+     </div>
+ </div>
+
+
+  </>
+  
   
 );
 }
