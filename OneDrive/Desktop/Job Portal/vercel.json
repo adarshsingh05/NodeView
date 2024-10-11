@@ -4,6 +4,7 @@
       "NODE_ENV": "production"
     },
     "commands": {
+      "install": "npm install",
       "build": "npm run build"
     }
   },
