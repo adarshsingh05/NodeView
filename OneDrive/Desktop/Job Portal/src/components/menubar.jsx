@@ -42,6 +42,13 @@ export function MenubarDemo() {
                 </MenubarTrigger>
             </Link>
             </MenubarMenu>
+            <MenubarMenu>
+            <Link to="/resources">
+                <MenubarTrigger className="font-bold h-full flex items-center cursor-pointer">
+                    Resources
+                </MenubarTrigger>
+            </Link>
+            </MenubarMenu>
             </Menubar>
         </div>
     );

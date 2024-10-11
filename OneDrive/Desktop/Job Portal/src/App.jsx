@@ -27,6 +27,10 @@ import UserFeedbackPage from './api/viewuserfeedback';
 import EventsList from './temp components/EventList';
 import AadharUpload from './api/adharupload';
 import AadharCardViewer from './api/adharview';
+import EmailVerification from './emailverification/uiofmail';
+import Resources from './emailverification/resources';
+import EmailGenerator from './emailverification/displayemail';
+import EmailVerifier from './emailverification/displayemail';
 // Defining the router dom and creating the route for the multi pages app.
 const router = createBrowserRouter([
   {
@@ -179,6 +183,30 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoutes> 
             <EventsList /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/resources',  
+        element: (
+          <ProtectedRoutes> 
+            <Resources /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/recruitersmailid',  
+        element: (
+          <ProtectedRoutes> 
+            <EmailGenerator /> 
+          </ProtectedRoutes>
+        )
+      },
+      {
+        path: '/verifyemail',  
+        element: (
+          <ProtectedRoutes> 
+            <EmailVerification /> 
           </ProtectedRoutes>
         )
       },
