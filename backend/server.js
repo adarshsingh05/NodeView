@@ -4,13 +4,15 @@ import WalletRoutes from './routes/WalletRoutes.js';
 import cors from 'cors';
 const app = express();
 const port = 9000;
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
 // MongoDB connection
-const dbURI = 'mongodb+srv://adarsh:a8400629408@cluster0.glqtu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const dbURI = process.env.MONGO_URI;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
