@@ -5,67 +5,8 @@ import ReactFlow, {
   Controls,
   MarkerType,
 } from "react-flow-renderer";
-const LeftSidebar = () => (
-  <div
-    style={{
-      position: "absolute",
-      top: "40px",
-      left: "12px",
-      width: "270px",
-      height: "calc(90vh - 60px)",
-      backgroundColor: "black",
-      padding: "20px",
-      boxShadow: "4px 0 10px rgba(0, 0, 0, 0.5)",
-      border: "3px solid #2e2e2e",
-      borderRadius: "20px",
-      zIndex: 1000,
-      overflow: "hidden",
-    }}
-  >
-     <style>
-            {`
-      div h2 {
-        margin-left: 25px;
-        color: white; /* Blue color */
-        font-size: 1.5rem; /* Larger text */
-        font-weight: 600; /* Semi-bold */
-        font-family: 'Mono', monospace; /* Monospace font */
-      }
-    `}
-            {`
-      div span {
-        color: white; /* Blue color */
-        font-size: 1rem; /* Larger text */
-        font-weight: 600; /* Semi-bold */
-        font-family: 'Mono', monospace; /* Monospace font */
-      }
-    `}
-            {`
-      div p {
-        color: #a0aec0; /* Blue color */
-        font-size: 1rem; /* Larger text */
-        font-weight: 600; /* Semi-bold */
-        font-family: 'Mono', monospace; /* Monospace font */
-      }
-    `}
-            {`
-      div svg {
-       margin-right: 10px;
-      }
-    `}
-          </style>
-    <h2 >Left Sidebar</h2>
-    <p >
-      This sidebar is always visible. You can use it to display additional
-      information or controls.
-    </p>
-    <ul >
-      <li>Feature 1</li>
-      <li>Feature 2</li>
-      <li>Feature 3</li>
-    </ul>
-  </div>
-);
+import LeftSidebar from "./leftsidebar";
+
 
 const App = () => {
   const [nodes, setNodes] = useState([]);
@@ -213,7 +154,7 @@ const App = () => {
             position: "absolute",
             top: "40px",
             right: "12px",
-            width: "calc(270px - 40px)",
+            width: "calc(200px - 40px)",
             height: "calc(90vh - 60px)",
             backgroundColor: "black",
             padding: "20px",
@@ -230,7 +171,7 @@ const App = () => {
       div h2 {
         margin-left: 25px;
         color: white; /* Blue color */
-        font-size: 1.5rem; /* Larger text */
+        font-size: 1rem; /* Larger text */
         font-weight: 600; /* Semi-bold */
         font-family: 'Mono', monospace; /* Monospace font */
       }
@@ -238,7 +179,7 @@ const App = () => {
             {`
       div span {
         color: white; /* Blue color */
-        font-size: 1rem; /* Larger text */
+        font-size: 0.7rem; /* Larger text */
         font-weight: 600; /* Semi-bold */
         font-family: 'Mono', monospace; /* Monospace font */
       }
@@ -246,7 +187,7 @@ const App = () => {
             {`
       div p {
         color: #a0aec0; /* Blue color */
-        font-size: 1rem; /* Larger text */
+        font-size: 0.7rem; /* Larger text */
         font-weight: 600; /* Semi-bold */
         font-family: 'Mono', monospace; /* Monospace font */
       }
@@ -336,9 +277,9 @@ const App = () => {
               font: "Mono",
               textAlign: "center",
               textJustify: "center",
-              height: "50px",
-              width: "240px",
-              fontSize: "17px",
+              height: "30px",
+              width: "160px",
+              fontSize: "11px",
               backgroundColor: "#1b1b1b",
               border: "1px solid white",
               borderRadius: "10px",
@@ -399,7 +340,7 @@ const App = () => {
           style={{
             position: "relative",
             top: "10px",
-            left: "15%",
+            left: "24%",
             zIndex: 1000,
             width: "70%",
             display: "flex",
@@ -415,25 +356,34 @@ const App = () => {
             style={{
               padding: "10px",
               borderRadius: "5px",
-              border: "1px solid #ccc",
+              border: "1px solid #0000FF",
               marginRight: "10px",
               width: "calc(100% - 120px)", // Adjust input width to leave space for the button
             }}
           />
           <button
-            onClick={handleSearch}
-            style={{
-              padding: "10px",
-              borderRadius: "5px",
-              backgroundColor: "white",
-              color: "blue",
-              border: "none",
-              cursor: "pointer",
-              width: "100px", // Fixed width for the button
-            }}
-          >
-            Search
-          </button>
+  style={{
+    padding: "10px",
+    borderRadius: "5px",
+    backgroundColor: "white",
+    fontSize: "16px",
+    color: "blue",
+    border: "none",
+    cursor: "pointer",
+    width: "100px", // Fixed width for the button
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = "blue";
+    e.target.style.color = "white";
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = "white";
+    e.target.style.color = "blue";
+  }}
+>
+  Search
+</button>
+
         </div>
         
 

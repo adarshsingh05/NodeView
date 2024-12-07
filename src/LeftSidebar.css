@@ -1,0 +1,71 @@
+/* LeftSidebar.css */
+
+.left-sidebar {
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 210px;
+    height: calc(100vh - 60px);
+    background-color: black;
+    padding: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    border: 3px solid #2e2e2e;
+    border-radius: 20px;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  .left-sidebar h2 {
+    margin-left: 15px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Mono', monospace;
+  }
+  
+  .left-sidebar .sidebar-content {
+    text-align: center;
+    font-family: 'Mono', monospace;
+  }
+  
+  .left-sidebar .sidebar-content span {
+    color: #a0aec0;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Mono', monospace;
+  }
+  
+  .left-sidebar svg {
+    margin-right: 10px;
+  }
+  
+
+
+
+
+  .left-sidebar span {
+    color: white; /* White color */
+    
+font-size: 1rem; /* Font size */
+font-weight: 600; /* Semi-bold */
+font-family: 'Mono', monospace; /* Monospace font */
+
+height: 50px; /* Height of 100px */
+width: 230px; /* Width of 100px */
+display: inline-block; /* Make the span block-level to apply height and width */
+text-align: center; /* Center the text */
+line-height: 50px; /* Vertically center the text */
+border: 1px solid white;
+margin: 6px; /* Add some margin */
+margin-left:10px;
+margin-right:10px;
+border-radius: 10px; /* Rounded corners */
+cursor: pointer; /* Add a pointer on hover */
+ }
+ .left-sidebar span:hover {
+background-color: #2e2e2e; /* Change background color to gray on hover */
+}
+  
