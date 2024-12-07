@@ -17,29 +17,18 @@
     z-index: 1000;
     overflow: hidden;
   }
-  
-  .left-sidebar h2 {
-    margin-left: 15px;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-family: 'Mono', monospace;
-  }
-  
-  .left-sidebar .sidebar-content {
-    text-align: center;
-    font-family: 'Mono', monospace;
-  }
-  
-  .left-sidebar .sidebar-content span {
-    color: #a0aec0;
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: 'Mono', monospace;
-  }
+
+
   
   .left-sidebar svg {
     margin-right: 10px;
+  }
+  
+  .left-sidebar h4 {
+    margin-right: 10px;
+    font-size: 30px;
+    margin-top: -6px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   
 
@@ -58,14 +47,17 @@ width: 230px; /* Width of 100px */
 display: inline-block; /* Make the span block-level to apply height and width */
 text-align: center; /* Center the text */
 line-height: 50px; /* Vertically center the text */
-border: 1px solid white;
+border: 2px solid #2e2e2e;
 margin: 6px; /* Add some margin */
 margin-left:10px;
 margin-right:10px;
 border-radius: 10px; /* Rounded corners */
 cursor: pointer; /* Add a pointer on hover */
+transition: background-color 0.3s; /* Smoothly transition the background color */
+text-decoration: none; /* Remove underline (if any) */
  }
  .left-sidebar span:hover {
 background-color: #2e2e2e; /* Change background color to gray on hover */
+border: 2px solid rgb(200, 198, 198);
 }
   
