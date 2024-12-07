@@ -87,7 +87,7 @@ const App = () => {
         setLoading(true);
 
         // Fetch wallet data
-        const walletResponse = await fetch("http://localhost:9000/wallets/all");
+        const walletResponse = await fetch("https://node-view.vercel.app/wallets/all");
         const wallets = await walletResponse.json();
 
         // Generate random positions for nodes
@@ -135,7 +135,7 @@ const App = () => {
   const fetchTransactions = async (walletId) => {
     try {
       const transactionResponse = await fetch(
-        `http://localhost:9000/wallets/noder/${walletId}`
+        `https://node-view.vercel.app/wallets/noder/${walletId}`
       );
       const transactions = await transactionResponse.json();
 
