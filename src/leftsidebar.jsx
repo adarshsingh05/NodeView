@@ -9,7 +9,8 @@ const LeftSidebar = () => {
       <div className=" flex flex-col">
         {/* Use Link to navigate to the All Wallets page */}
         <Link to="/home"><span>Network</span></Link>
-        <Link to="/all-wallets"><span>All Wallets </span></Link>
+        <Link to="/all-wallets"><span>Crawler </span></Link>
+        <Link to="/extractor"><span>Extractor </span></Link>
       </div>
     </div>
   );

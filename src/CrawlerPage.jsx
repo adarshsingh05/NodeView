@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CrawlerPage.css";
+import TypingEffect from 'react-typing-effect';
 
 const CrawlerPage = ({ walletId }) => {
   const [wallets, setWallets] = useState([]); // State to store fetched data
@@ -46,7 +47,15 @@ const CrawlerPage = ({ walletId }) => {
       <div className="upperdiv">
         <div className="secondDiv">
           <p className="firstText">Active Nodes: </p>
-          <p className="secondText">{wallets.length} Currently On Network</p>
+          <p className="secondText">{wallets.length} Currently On Network {" "}
+          <TypingEffect
+        text={['.....']}
+        speed={100} // Speed of typing
+        eraseDelay={1000} // Delay before erasing
+        typingDelay={500} // Delay before typing starts
+        cursor="|" // Custom cursor
+      />
+          </p>
         </div>
         <div className="third div">
           <input

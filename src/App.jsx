@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LeftSidebar from "./leftsidebar";
 import CrawlerPage from "./CrawlerPage"; 
 import Apps from "./homepage";
+import Extractor from "./extractor";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Routes>
             <Route path="/all-wallets" element={<CrawlerPage />} />
             <Route path="/home" element={<Apps />} />
+            <Route path="/extractor" element={<Extractor />} />
           </Routes>
         </div>
       </div>
