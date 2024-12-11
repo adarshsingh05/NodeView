@@ -384,6 +384,7 @@ const Apps = () => {
     e.target.style.backgroundColor = "white";
     e.target.style.color = "blue";
   }}
+  onClick={handleSearch }
 >
   Search
 </button>
