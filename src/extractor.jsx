@@ -1,14 +1,15 @@
-
 'use client'; // Necessary for client-side rendering
 
 import { useState } from 'react';
 import axios from 'axios';
 import "./CrawlerPage.css";
 
-const Extractor = ({ walletIds }) => {
+const Extractor = () => {
   const [walletId, setWalletId] = useState('');
   const [walletDetails, setWalletDetails] = useState(null);
   const [transactions, setTransactions] = useState([]);
+  const [cardanoWalletId, setCardanoWalletId] = useState('');
+  const [cardanoTransactions, setCardanoTransactions] = useState([]);
   const [error, setError] = useState('');
 
   const fetchWalletDetails = async () => {
@@ -69,26 +70,72 @@ const Extractor = ({ walletIds }) => {
       setError('An error occurred while fetching wallet details or transactions.');
     }
   };
+
+  const fetchCardanoTransactions = async () => {
+    setError('');
+    setCardanoTransactions([]);
+
+    if (!cardanoWalletId) {
+      setError('Please enter a Cardano ZKEVM wallet ID.');
+      return;
+    }
+
+    try {
+      const cardanoResponse = await axios.get(
+        `https://api-cardona-zkevm.polygonscan.com/api`,
+        {
+          params: {
+            module: 'account',
+            action: 'txlist',
+            address: cardanoWalletId,
+            startblock: 0,
+            endblock: 99999999,
+            page: 1,
+            offset: 10,
+            sort: 'asc',
+            apikey: "SUH8N8U9WVIKFC8Z1CY86H3K6XJUCGQRUD",
+          },
+        }
+      );
+
+      if (cardanoResponse.data.status === '1') {
+        setCardanoTransactions(cardanoResponse.data.result);
+      } else {
+        setError(cardanoResponse.data.message || 'Unable to fetch Cardano transactions.');
+      }
+    } catch (err) {
+      setError('An error occurred while fetching Cardano ZKEVM transactions.');
+    }
+  };
+
   return (
     <div className="crawler-container">
       <div className="upperdiv">
         <div className="secondDiv">
-          <p className="firstText">CryptoVigil's Extraction Portal </p>
-         
+          <p className="firstText">CryptoVigil's Extraction Portal</p>
         </div>
         <div className="third div">
-            <input
-              type="text"
-              className="searchBar"
-              value={walletId}
-              onChange={(e) => setWalletId(e.target.value)}
-              placeholder="Search for Wallet using ID or name"
-            />
-            <button className="searchButton"
-             onClick={fetchWalletDetails}>Search</button>
-          </div>
-        <div className="third div"></div>
+          <input
+            type="text"
+            className="searchBar"
+            value={walletId}
+            onChange={(e) => setWalletId(e.target.value)}
+            placeholder="Search for Ethereum Wallet"
+          />
+          <button className="searchButton" onClick={fetchWalletDetails}>Search</button>
+        </div>
+        <div className="third div">
+          <input
+            type="text"
+            className="searchBar"
+            value={cardanoWalletId}
+            onChange={(e) => setCardanoWalletId(e.target.value)}
+            placeholder="Search for Cardano ZKEVM Wallet"
+          />
+          <button className="searchButton" onClick={fetchCardanoTransactions}>Search</button>
+        </div>
       </div>
+
       <div className="maincard"></div>
 
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
@@ -103,9 +150,25 @@ const Extractor = ({ walletIds }) => {
         )}
         {transactions.length > 0 && (
           <div className="mt-4 bg-gray-100 p-4 rounded">
-            <h2 className="text-lg font-bold mb-2">Last 10 Transactions:</h2>
+            <h2 className="text-lg font-bold mb-2">Last 10 Ethereum Transactions:</h2>
             <ul className="list-disc pl-5">
               {transactions.map((tx, index) => (
+                <li key={index} className="mb-2">
+                  <p><strong>Hash:</strong> {tx.hash}</p>
+                  <p><strong>From:</strong> {tx.from}</p>
+                  <p><strong>To:</strong> {tx.to}</p>
+                  <p><strong>Value:</strong> {parseFloat(tx.value) / 10 ** 18} ETH</p>
+                  <p><strong>Date:</strong> {new Date(tx.timeStamp * 1000).toLocaleString()}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {cardanoTransactions.length > 0 && (
+          <div className="mt-4 bg-gray-100 p-4 rounded">
+            <h2 className="text-lg font-bold mb-2">Last 10 Cardano ZKEVM Transactions:</h2>
+            <ul className="list-disc pl-5">
+              {cardanoTransactions.map((tx, index) => (
                 <li key={index} className="mb-2">
                   <p><strong>Hash:</strong> {tx.hash}</p>
                   <p><strong>From:</strong> {tx.from}</p>
