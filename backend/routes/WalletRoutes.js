@@ -16,14 +16,22 @@ router.post("/add", async (req, res) => {
     }
   });
 router.post("/noder", async (req, res) => {
-    const wallets = req.body; // Expecting an array of wallets
-  
+
     try {
-      // Use `insertMany` to insert all wallets at once
-      await Noder.insertMany(wallets);
-      res.status(201).json({ message: "nodes added successfully" });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+      const transactionData = req.body.transactions; // Extract transactions array from the body
+  
+      // Ensure that the data is an array and loop through it
+      for (const tx of transactionData) {
+        // Validate and save each transaction using your Mongoose model
+        const transaction = new Noder(tx);
+        await Noder.insertMany(transaction);      }
+  
+      res.status(200).json({
+        message: "Transactions saved successfully",
+      });
+    } catch (err) {
+      console.error("Error saving transaction", err);
+      res.status(500).json({ message: "Failed to save transaction", error: err.message });
     }
   });
   router.get("/noder", async (req, res) => {

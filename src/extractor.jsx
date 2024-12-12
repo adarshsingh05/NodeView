@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import "./CrawlerPage.css";
-import { Link } from 'react-router-dom';
 const Extractor = () => {
   const [walletId, setWalletId] = useState('');
   const [walletDetails, setWalletDetails] = useState(null);
@@ -74,12 +73,12 @@ const Extractor = () => {
   const fetchCardanoTransactions = async () => {
     setError('');
     setCardanoTransactions([]);
-
+  
     if (!cardanoWalletId) {
       setError('Please enter a Cardano ZKEVM wallet ID.');
       return;
     }
-
+  
     try {
       const cardanoResponse = await axios.get(
         `https://api-cardona-zkevm.polygonscan.com/api`,
@@ -97,9 +96,32 @@ const Extractor = () => {
           },
         }
       );
-
+  
       if (cardanoResponse.data.status === '1') {
-        setCardanoTransactions(cardanoResponse.data.result);
+        const transactions = cardanoResponse.data.result;
+        setCardanoTransactions(transactions);
+        
+        const extractedTransactions = cardanoResponse.data.result.map(tx => ({
+          hash: tx.hash,
+          from: tx.from,
+          to: tx.to,
+          value: tx.value,
+          timestamp: tx.timeStamp,
+        }));
+  
+        // Sending data to the backend
+        const response = await axios.post('https://node-backend-jb9i.onrender.com/api/sendtransactions', { transactions: extractedTransactions });
+        
+        // Log the response from the backend
+        console.log("Backend Response:", response.data);
+        
+        // Optionally check the success status and show a message
+        if (response.status === 200) {
+          console.log('Data sent successfully to the backend.');
+        } else {
+          console.log('Failed to send data to the backend.');
+        }
+        
       } else {
         setError(cardanoResponse.data.message || 'Unable to fetch Cardano transactions.');
       }
@@ -107,6 +129,7 @@ const Extractor = () => {
       setError('An error occurred while fetching Cardano ZKEVM transactions.');
     }
   };
+  
 
   return (
     <div className="crawler-container">
