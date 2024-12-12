@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import "./CrawlerPage.css";
-
+import { Link } from 'react-router-dom';
 const Extractor = () => {
   const [walletId, setWalletId] = useState('');
   const [walletDetails, setWalletDetails] = useState(null);
@@ -150,7 +150,7 @@ const Extractor = () => {
         )}
         {transactions.length > 0 && (
           <div className="mt-4 bg-gray-100 p-4 rounded">
-            <h2 className="text-lg font-bold mb-2">Last 10 Ethereum Transactions:</h2>
+            <h2 className="text-lg font-bold mb-2">Last 10 Ethereum Transactions--:</h2>
             <ul className="list-disc pl-5">
               {transactions.map((tx, index) => (
                 <li key={index} className="mb-2">
@@ -159,6 +159,7 @@ const Extractor = () => {
                   <p><strong>To:</strong> {tx.to}</p>
                   <p><strong>Value:</strong> {parseFloat(tx.value) / 10 ** 18} ETH</p>
                   <p><strong>Date:</strong> {new Date(tx.timeStamp * 1000).toLocaleString()}</p>
+              
                 </li>
               ))}
             </ul>
@@ -175,6 +176,17 @@ const Extractor = () => {
                   <p><strong>To:</strong> {tx.to}</p>
                   <p><strong>Value:</strong> {parseFloat(tx.value) / 10 ** 18} ETH</p>
                   <p><strong>Date:</strong> {new Date(tx.timeStamp * 1000).toLocaleString()}</p>
+                  <a
+  href="https://www.google.com/maps/@23.2494397,77.5027346,1541m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI0MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="bg-green-500 text-white">
+    View
+  </button>
+</a>
+
+                   
                 </li>
               ))}
             </ul>
