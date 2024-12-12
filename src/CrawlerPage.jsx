@@ -61,7 +61,7 @@ const CrawlerPage = ({ walletId }) => {
           <input
             type="text"
             className="searchBar"
-            placeholder="Search for Wallet using ID or name"
+            placeholder=" Search for Wallet using ID or name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

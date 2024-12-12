@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import "./CrawlerPage.css";
+import { Link } from 'react-router-dom';
+
 const Extractor = () => {
   const [walletId, setWalletId] = useState('');
   const [walletDetails, setWalletDetails] = useState(null);
@@ -73,12 +75,12 @@ const Extractor = () => {
   const fetchCardanoTransactions = async () => {
     setError('');
     setCardanoTransactions([]);
-  
+
     if (!cardanoWalletId) {
       setError('Please enter a Cardano ZKEVM wallet ID.');
       return;
     }
-  
+
     try {
       const cardanoResponse = await axios.get(
         `https://api-cardona-zkevm.polygonscan.com/api`,
@@ -96,32 +98,9 @@ const Extractor = () => {
           },
         }
       );
-  
+
       if (cardanoResponse.data.status === '1') {
-        const transactions = cardanoResponse.data.result;
-        setCardanoTransactions(transactions);
-        
-        const extractedTransactions = cardanoResponse.data.result.map(tx => ({
-          hash: tx.hash,
-          from: tx.from,
-          to: tx.to,
-          value: tx.value,
-          timestamp: tx.timeStamp,
-        }));
-  
-        // Sending data to the backend
-        const response = await axios.post('https://node-backend-jb9i.onrender.com/api/sendtransactions', { transactions: extractedTransactions });
-        
-        // Log the response from the backend
-        console.log("Backend Response:", response.data);
-        
-        // Optionally check the success status and show a message
-        if (response.status === 200) {
-          console.log('Data sent successfully to the backend.');
-        } else {
-          console.log('Failed to send data to the backend.');
-        }
-        
+        setCardanoTransactions(cardanoResponse.data.result);
       } else {
         setError(cardanoResponse.data.message || 'Unable to fetch Cardano transactions.');
       }
@@ -129,37 +108,40 @@ const Extractor = () => {
       setError('An error occurred while fetching Cardano ZKEVM transactions.');
     }
   };
-  
 
   return (
     <div className="crawler-container">
-      <div className="upperdiv">
+      
         <div className="secondDiv">
-          <p className="firstText">CryptoVigil's Extraction Portal</p>
+        <p className="firstText ex " style={{ marginBottom: '20px'}} > CryptoVigil's Extraction Portal</p>
         </div>
-        <div className="third div">
+        <div style={{ marginLeft: '33px'}}>
           <input
             type="text"
-            className="searchBar"
+            className="searchBar newWidth " 
             value={walletId}
             onChange={(e) => setWalletId(e.target.value)}
-            placeholder="Search for Ethereum Wallet"
+            placeholder="  Search for Ethereum Wallet"
           />
-          <button className="searchButton" onClick={fetchWalletDetails}>Search</button>
-        </div>
-        <div className="third div">
+          <button className="searchButton extractor" onClick={fetchWalletDetails}> Search
+          </button>
+        
+       
           <input
             type="text"
-            className="searchBar"
+            className="searchBar newWidth"
             value={cardanoWalletId}
             onChange={(e) => setCardanoWalletId(e.target.value)}
-            placeholder="Search for Cardano ZKEVM Wallet"
+            placeholder="  Search for Cardano ZKEVM Wallet"
           />
-          <button className="searchButton" onClick={fetchCardanoTransactions}>Search</button>
-        </div>
+          <button className="searchButton extractor " onClick={fetchCardanoTransactions}>Search</button>
+        
       </div>
+      
 
-      <div className="maincard"></div>
+
+   
+<div className="maincard">
 
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
         {error && (
@@ -174,10 +156,10 @@ const Extractor = () => {
         {transactions.length > 0 && (
           <div className="mt-4 bg-gray-100 p-4 rounded">
             <h2 className="text-lg font-bold mb-2">Last 10 Ethereum Transactions--:</h2>
-            <ul className="list-disc pl-5">
-              {transactions.map((tx, index) => (
-                <li key={index} className="mb-2">
-                  <p><strong>Hash:</strong> {tx.hash}</p>
+            <ul className=" list-none pl-5" >
+            {transactions.map((tx, index) => (
+                <li key={index} className=" mb-2" >
+                  <p ><strong>Hash:</strong> {tx.hash}</p>
                   <p><strong>From:</strong> {tx.from}</p>
                   <p><strong>To:</strong> {tx.to}</p>
                   <p><strong>Value:</strong> {parseFloat(tx.value) / 10 ** 18} ETH</p>
@@ -216,6 +198,7 @@ const Extractor = () => {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };
