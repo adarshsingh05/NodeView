@@ -187,33 +187,37 @@ const Extractor = () => {
             </ul>
           </div>
         )}
-        {cardanoTransactions.length > 0 && (
-          <div className="mt-4 bg-gray-100 p-4 rounded">
-            <h2 className="text-lg font-bold mb-2">Last 10 Cardano ZKEVM Transactions:</h2>
-            <ul className="list-disc pl-5">
-              {cardanoTransactions.map((tx, index) => (
-                <li key={index} className="mb-2">
-                  <p><strong>Hash:</strong> {tx.hash}</p>
-                  <p><strong>From:</strong> {tx.from}</p>
-                  <p><strong>To:</strong> {tx.to}</p>
-                  <p><strong>Value:</strong> {parseFloat(tx.value) / 10 ** 18} ETH</p>
-                  <p><strong>Date:</strong> {new Date(tx.timeStamp * 1000).toLocaleString()}</p>
-                  <a
-  href="https://www.google.com/maps/place/23%C2%B014'55.1%22N+77%C2%B030'08.7%22E/@23.248629,77.5017733,200m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d23.248629!4d77.502417?entry=ttu&g_ep=EgoyMDI0MTIwOS4wIKXMDSoASAFQAw%3D%3D"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <button className="bg-green-500 text-white">
-    View
-  </button>
-</a>
+  {cardanoTransactions.length > 0 && (
+  <div className="mt-4 bg-gray-100 p-4 rounded">
+    <h2 className="text-lg font-bold mb-2">Last 10 Cardano ZKEVM Transactions:</h2>
+    <ul className="list-disc pl-5">
+      {cardanoTransactions.map((tx, index) => {
+        const valueInEth = parseFloat(tx.value) / 10 ** 18; // Convert value to ETH
+        const mapUrl =
+          valueInEth === 0.02 
+            ? "https://www.google.com/maps/place/VIT-AP+University/@16.4970554,80.4991965,804m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3a35f27d40f21c55:0x1490eacd54859850!8m2!3d16.4970554!4d80.4991965!16s%2Fg%2F11c1_97gpv?entry=ttu&g_ep=EgoyMDI0MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+            : "https://www.google.com/maps/place/23%C2%B014'55.1%22N+77%C2%B030'08.7%22E/@23.248629,77.5017733,200m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d23.248629!4d77.502417?entry=ttu&g_ep=EgoyMDI0MTIwOS4wIKXMDSoASAFQAw%3D%3D";
 
-                   
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        return (
+          <li key={index} className="mb-2">
+            <p><strong>Hash:</strong> {tx.hash}</p>
+            <p><strong>From:</strong> {tx.from}</p>
+            <p><strong>To:</strong> {tx.to}</p>
+            <p><strong>Value:</strong> {valueInEth} ETH</p>
+            <p><strong>Date:</strong> {new Date(tx.timeStamp * 1000).toLocaleString()}</p>
+            <a href={mapUrl} target="_blank" rel="noopener noreferrer">
+              <button className="bg-green-500 text-white px-4 py-2 rounded">
+                View
+              </button>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+)}
+
+
       </div>
     </div>
   );
